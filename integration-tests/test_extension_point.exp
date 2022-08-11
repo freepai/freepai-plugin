@@ -1,0 +1,14 @@
+processed 4 tasks
+
+task 2 'run'. lines 5-12:
+{
+  "gas_used": 30088,
+  "status": {
+    "Keep": "Executed"
+  }
+}
+
+task 3 'view'. lines 14-14:
+store key 0xf2aa2eae4ceaae88b308fc904975e4ae::ExtensionPoint::ExtensionPointRegistry {
+    next_id: 1
+}
