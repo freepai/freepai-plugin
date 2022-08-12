@@ -1,4 +1,4 @@
-processed 6 tasks
+processed 9 tasks
 
 task 2 'run'. lines 5-13:
 {
@@ -10,7 +10,7 @@ task 2 'run'. lines 5-13:
 
 task 4 'run'. lines 17-25:
 {
-  "gas_used": 173903,
+  "gas_used": 192607,
   "status": {
     "Keep": "Executed"
   }
@@ -23,8 +23,55 @@ store key 0xf2aa2eae4ceaae88b308fc904975e4ae::ExtensionPoint::Registry {
         store key 0xf2aa2eae4ceaae88b308fc904975e4ae::ExtensionPoint::ExtensionPoint {
             id: 1
             name: 3078313a3a457874656e73696f6e506f696e743a3a49417070
-            describe: 697066733a3a2f2f787878787878
-            protobuf: 697066733a3a2f2f787878787878
+            versions: [
+                store 0xf2aa2eae4ceaae88b308fc904975e4ae::ExtensionPoint::Version {
+                    code: 1
+                    describe: 697066733a3a2f2f787878787878
+                    protobuf: 697066733a3a2f2f787878787878
+                    created_at: 10000
+                },
+            ]
+            created_at: 10000
+        },
+    ]
+}
+
+task 7 'run'. lines 31-39:
+{
+  "gas_used": 192607,
+  "status": {
+    "Keep": "Executed"
+  }
+}
+
+task 8 'view'. lines 41-41:
+store key 0xf2aa2eae4ceaae88b308fc904975e4ae::ExtensionPoint::Registry {
+    next_id: 3
+    items: [
+        store key 0xf2aa2eae4ceaae88b308fc904975e4ae::ExtensionPoint::ExtensionPoint {
+            id: 1
+            name: 3078313a3a457874656e73696f6e506f696e743a3a49417070
+            versions: [
+                store 0xf2aa2eae4ceaae88b308fc904975e4ae::ExtensionPoint::Version {
+                    code: 1
+                    describe: 697066733a3a2f2f787878787878
+                    protobuf: 697066733a3a2f2f787878787878
+                    created_at: 10000
+                },
+            ]
+            created_at: 10000
+        },
+        store key 0xf2aa2eae4ceaae88b308fc904975e4ae::ExtensionPoint::ExtensionPoint {
+            id: 2
+            name: 3078313a3a457874656e73696f6e506f696e743a3a49417070
+            versions: [
+                store 0xf2aa2eae4ceaae88b308fc904975e4ae::ExtensionPoint::Version {
+                    code: 1
+                    describe: 697066733a3a2f2f787878787878
+                    protobuf: 697066733a3a2f2f787878787878
+                    created_at: 10000
+                },
+            ]
             created_at: 10000
         },
     ]

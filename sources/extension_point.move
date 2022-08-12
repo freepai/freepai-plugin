@@ -11,11 +11,17 @@ module FreePlugin::ExtensionPoint {
     const ERR_ALREADY_INITIALIZED: u64 = 100;
     const ERR_NOT_CONTRACT_OWNER: u64 = 101;
 
+    struct Version has store  {
+       code: u64,
+       describe: vector<u8>,
+       protobuf: vector<u8>,
+       created_at: u64,
+    }
+
     struct ExtensionPoint has key, store  {
        id: u64,
        name: vector<u8>,
-       describe: vector<u8>,
-       protobuf: vector<u8>,
+       versions: vector<Version>,
        created_at: u64,
     }
 
@@ -69,17 +75,22 @@ module FreePlugin::ExtensionPoint {
         let extpoint_id = next_extpoint_id();
 
         let extpoint_registry = borrow_global_mut<Registry>(CONTRACT_ACCOUNT);
+
+        let version = Version {
+            code: 1,
+            describe: describe,
+            protobuf: protobuf,
+            created_at: Timestamp::now_milliseconds(),
+        };
+
         Vector::push_back<ExtensionPoint>(&mut extpoint_registry.items, ExtensionPoint{
             id: extpoint_id, 
             name: name, 
-            describe: describe, 
-            protobuf: protobuf, 
+            versions: Vector::singleton<Version>(version), 
             created_at: Timestamp::now_milliseconds(),
         });
 
         // grant owner NFT to sender
-
-
         let nft_mint_cap = borrow_global_mut<NFTMintCapHolder>(CONTRACT_ACCOUNT);
         let meta = RegistryEntry{
             registry_address: CONTRACT_ACCOUNT,

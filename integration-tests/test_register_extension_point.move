@@ -25,3 +25,17 @@ script {
 // check: EXECUTED
 
 //# view --address FreePlugin --resource 0xf2aa2eae4ceaae88b308fc904975e4ae::ExtensionPoint::Registry
+
+//# faucet --addr alice --amount 2000000000
+
+//# run --signers alice
+script {
+    use FreePlugin::ExtensionPoint;
+
+    fun main(sender: signer) {
+        ExtensionPoint::register(sender, b"0x1::ExtensionPoint::IApp", b"ipfs:://xxxxxx", b"ipfs:://xxxxxx");
+    }
+}
+// check: EXECUTED
+
+//# view --address FreePlugin --resource 0xf2aa2eae4ceaae88b308fc904975e4ae::ExtensionPoint::Registry
