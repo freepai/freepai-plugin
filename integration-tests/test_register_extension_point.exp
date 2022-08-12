@@ -1,0 +1,31 @@
+processed 6 tasks
+
+task 2 'run'. lines 5-13:
+{
+  "gas_used": 151705,
+  "status": {
+    "Keep": "Executed"
+  }
+}
+
+task 4 'run'. lines 17-25:
+{
+  "gas_used": 173903,
+  "status": {
+    "Keep": "Executed"
+  }
+}
+
+task 5 'view'. lines 27-27:
+store key 0xf2aa2eae4ceaae88b308fc904975e4ae::ExtensionPoint::Registry {
+    next_id: 2
+    items: [
+        store key 0xf2aa2eae4ceaae88b308fc904975e4ae::ExtensionPoint::ExtensionPoint {
+            id: 1
+            name: 3078313a3a457874656e73696f6e506f696e743a3a49417070
+            describe: 697066733a3a2f2f787878787878
+            protobuf: 697066733a3a2f2f787878787878
+            created_at: 10000
+        },
+    ]
+}
