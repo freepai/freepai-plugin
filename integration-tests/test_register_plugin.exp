@@ -1,0 +1,91 @@
+processed 10 tasks
+
+task 2 'run'. lines 5-13:
+{
+  "gas_used": 151705,
+  "status": {
+    "Keep": "Executed"
+  }
+}
+
+task 3 'view'. lines 15-15:
+store key 0xf2aa2eae4ceaae88b308fc904975e4ae::PluginMarketplace::PluginRegistry {
+    next_plugin_id: 1
+    plugins: [
+    ]
+}
+
+task 5 'run'. lines 19-27:
+{
+  "gas_used": 187241,
+  "status": {
+    "Keep": "Executed"
+  }
+}
+
+task 6 'view'. lines 29-29:
+store key 0xf2aa2eae4ceaae88b308fc904975e4ae::PluginMarketplace::PluginRegistry {
+    next_plugin_id: 2
+    plugins: [
+        store 0xf2aa2eae4ceaae88b308fc904975e4ae::PluginMarketplace::PluginInfo {
+            id: 1
+            name: 6d656d6265725f6d616e616765725f706c7567696e
+            describe: 697066733a3a2f2f787878787878
+            git_repo: 
+            next_version_number: 1
+            versions: [
+            ]
+            stars: [
+            ]
+            comments: [
+            ]
+            created_at: 10000
+            update_at: 10000
+        },
+    ]
+}
+
+task 8 'run'. lines 33-41:
+{
+  "gas_used": 187180,
+  "status": {
+    "Keep": "Executed"
+  }
+}
+
+task 9 'view'. lines 43-43:
+store key 0xf2aa2eae4ceaae88b308fc904975e4ae::PluginMarketplace::PluginRegistry {
+    next_plugin_id: 3
+    plugins: [
+        store 0xf2aa2eae4ceaae88b308fc904975e4ae::PluginMarketplace::PluginInfo {
+            id: 1
+            name: 6d656d6265725f6d616e616765725f706c7567696e
+            describe: 697066733a3a2f2f787878787878
+            git_repo: 
+            next_version_number: 1
+            versions: [
+            ]
+            stars: [
+            ]
+            comments: [
+            ]
+            created_at: 10000
+            update_at: 10000
+        },
+        store 0xf2aa2eae4ceaae88b308fc904975e4ae::PluginMarketplace::PluginInfo {
+            id: 2
+            name: 7374616b655f6d616e616765725f706c7567696e
+            describe: 697066733a3a2f2f787878787878
+            git_repo: 
+            next_version_number: 1
+            versions: [
+            ]
+            stars: [
+            ]
+            comments: [
+            ]
+            created_at: 10000
+            update_at: 10000
+        },
+    ]
+}

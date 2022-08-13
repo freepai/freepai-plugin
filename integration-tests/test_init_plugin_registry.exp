@@ -1,0 +1,52 @@
+processed 7 tasks
+
+task 2 'run'. lines 5-13:
+{
+  "gas_used": 151705,
+  "status": {
+    "Keep": "Executed"
+  }
+}
+
+task 3 'view'. lines 15-15:
+store key 0xf2aa2eae4ceaae88b308fc904975e4ae::PluginMarketplace::PluginRegistry {
+    next_plugin_id: 1
+    plugins: [
+    ]
+}
+
+task 4 'run'. lines 17-24:
+{
+  "gas_used": 21558,
+  "status": {
+    "Keep": {
+      "MoveAbort": [
+        {
+          "Module": {
+            "address": "0xf2aa2eae4ceaae88b308fc904975e4ae",
+            "name": "PluginMarketplace"
+          }
+        },
+        25606
+      ]
+    }
+  }
+}
+
+task 6 'run'. lines 28-35:
+{
+  "gas_used": 15643,
+  "status": {
+    "Keep": {
+      "MoveAbort": [
+        {
+          "Module": {
+            "address": "0xf2aa2eae4ceaae88b308fc904975e4ae",
+            "name": "PluginMarketplace"
+          }
+        },
+        25858
+      ]
+    }
+  }
+}
