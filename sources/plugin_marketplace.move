@@ -103,14 +103,33 @@ module FreePlugin::PluginMarketplace {
     }
 
     fun has_plugin_nft(sender_addr: address, plugin_id: u64): bool {
-        if (!exists<NFTGallery<PluginOwnerNFTMeta, PluginOwnerNFTBody>>(sender_addr)) {
+        if (!NFTGallery::is_accept<PluginOwnerNFTMeta, PluginOwnerNFTBody>(sender_addr)) {
             return false
         };
-        let id_nft = borrow_global<IdentifierNFT<NFTMeta, NFTBody>>(owner);
-        Option::is_some(&id_nft.nft)
+
+        let nft_infos = NFTGallery::get_nft_infos<PluginOwnerNFTMeta, PluginOwnerNFTBody>(sender_addr);
+        let len = Vector::length(&nft_infos);
+        if (len == 0) {
+            return false
+        };
+
+        let idx = len - 1;
+        loop {
+            let nft_info = Vector::borrow(&nft_infos, idx);
+            let (_, _, _, type_meta) = NFT::unpack_info<PluginOwnerNFTMeta>(*nft_info);
+            if (type_meta.plugin_id == plugin_id) {
+                return true
+            };
+
+            if (idx == 0) {
+                return false
+            };
+            
+            idx = idx - 1;
+        }
     }
 
-    fun ensure_plugin_nft(sender_addr: address, plugin_id: u64) {
+    fun ensure_exists_plugin_nft(sender_addr: address, plugin_id: u64) {
         assert!(has_plugin_nft(sender_addr, plugin_id), Errors::invalid_state(ERR_EXPECT_PLUGIN_NFT));
     }
 
@@ -165,8 +184,18 @@ module FreePlugin::PluginMarketplace {
         NFTGallery::deposit(&sender, nft);
     }
 
-    public(script) fun publish_plugin_version(sender: signer, plugin_id:u64, version: PluginVersion) acquires PluginRegistry {
-        ensure_plugin_nft(sender, plugin_id);
+    public(script) fun publish_plugin_version(
+        sender: signer, 
+        plugin_id:u64, 
+        version: vector<u8>,
+        required_caps: vector<vector<u8>>,
+        export_caps: vector<vector<u8>>, 
+        implement_extpoints: vector<vector<u8>>, 
+        depend_extpoints: vector<vector<u8>>,
+        contract_module: vector<u8>, 
+        js_entry_uri: vector<u8>, 
+    ) acquires PluginRegistry {
+        ensure_exists_plugin_nft(Signer::address_of(&sender), plugin_id);
 
         let plugin_registry = borrow_global_mut<PluginRegistry>(CONTRACT_ACCOUNT);
 
@@ -179,13 +208,13 @@ module FreePlugin::PluginMarketplace {
         let version_number = next_plugin_version_number(plugin);
         Vector::push_back<PluginVersion>(&mut plugin.versions, PluginVersion{
             number: version_number,
-            version: version.version,
-            required_caps: version.required_caps,
-            export_caps: version.export_caps,
-            implement_extpoints: version.implement_extpoints,
-            depend_extpoints: version.depend_extpoints,
-            contract_module: version.contract_module,
-            js_entry_uri: version.js_entry_uri,
+            version: version,
+            required_caps: required_caps,
+            export_caps: export_caps,
+            implement_extpoints: implement_extpoints,
+            depend_extpoints: depend_extpoints,
+            contract_module: contract_module,
+            js_entry_uri: js_entry_uri,
             created_at: Timestamp::now_milliseconds(),
         });
     }
