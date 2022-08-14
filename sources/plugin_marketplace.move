@@ -156,7 +156,7 @@ module FreePlugin::PluginMarketplace {
         });
     }
 
-    public(script) fun register_plugin(sender: signer, name: vector<u8>, describe: vector<u8>) acquires PluginRegistry, PluginOwnerNFTMintCapHolder {
+    public fun register_plugin(sender: &signer, name: vector<u8>, describe: vector<u8>): u64 acquires PluginRegistry, PluginOwnerNFTMintCapHolder {
         let plugin_id = next_plugin_id();
         let plugin_registry = borrow_global_mut<PluginRegistry>(CONTRACT_ACCOUNT);
 
@@ -181,11 +181,13 @@ module FreePlugin::PluginMarketplace {
         };
 
         let nft = NFT::mint_with_cap_v2(CONTRACT_ACCOUNT, &mut nft_mint_cap.cap, *&nft_mint_cap.nft_metadata, meta, PluginOwnerNFTBody{});
-        NFTGallery::deposit(&sender, nft);
+        NFTGallery::deposit(sender, nft);
+
+        plugin_id
     }
 
-    public(script) fun publish_plugin_version(
-        sender: signer, 
+    public fun publish_plugin_version(
+        sender: &signer, 
         plugin_id:u64, 
         version: vector<u8>,
         required_caps: vector<vector<u8>>,
@@ -195,7 +197,7 @@ module FreePlugin::PluginMarketplace {
         contract_module: vector<u8>, 
         js_entry_uri: vector<u8>, 
     ) acquires PluginRegistry {
-        ensure_exists_plugin_nft(Signer::address_of(&sender), plugin_id);
+        ensure_exists_plugin_nft(Signer::address_of(sender), plugin_id);
 
         let plugin_registry = borrow_global_mut<PluginRegistry>(CONTRACT_ACCOUNT);
 

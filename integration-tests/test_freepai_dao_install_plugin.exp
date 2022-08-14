@@ -1,0 +1,50 @@
+processed 7 tasks
+
+task 2 'run'. lines 5-13:
+{
+  "gas_used": 90590,
+  "status": {
+    "Keep": "Executed"
+  }
+}
+
+task 3 'view'. lines 15-15:
+key 0x9960cd7c0a0c353336780f69400f00cf::FreepaiDAO::FreepaiDAO {
+    name: 4672656570616944414f
+    signer_cap: store 0x00000000000000000000000000000001::Account::SignerCapability {
+        addr: 9960cd7c0a0c353336780f69400f00cf
+    }
+    next_member_id: 1
+    next_proposal_id: 1
+    installed_plugins: [
+    ]
+}
+
+task 5 'run'. lines 19-31:
+{
+  "gas_used": 46595,
+  "status": {
+    "Keep": "Executed"
+  }
+}
+
+task 6 'view'. lines 33-33:
+key 0x9960cd7c0a0c353336780f69400f00cf::FreepaiDAO::FreepaiDAO {
+    name: 4672656570616944414f
+    signer_cap: store 0x00000000000000000000000000000001::Account::SignerCapability {
+        addr: 9960cd7c0a0c353336780f69400f00cf
+    }
+    next_member_id: 1
+    next_proposal_id: 1
+    installed_plugins: [
+        store 0x9960cd7c0a0c353336780f69400f00cf::FreepaiDAO::InstalledPluginInfo {
+            plugin_id: 1
+            plugin_version: 1
+            granted_caps: [
+                copy drop store 0x9960cd7c0a0c353336780f69400f00cf::FreepaiDAO::CapType {
+                    code: 1u8
+                },
+            ]
+        },
+    ]
+}
