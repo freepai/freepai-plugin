@@ -17,7 +17,7 @@ module FreepaiDAO::AnyMemberPlugin {
     }
 
     public fun setup(sender: &signer) {
-        
+        FreepaiDAO::register_
     }
 
     public fun teardown(sender: &signer) {
