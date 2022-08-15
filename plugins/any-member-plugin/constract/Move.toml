@@ -1,0 +1,11 @@
+[package]
+name = "ProposalPlugin"
+version = "0.1.0"
+
+[addresses]
+StarcoinFramework = "0x1"
+FreePlugin = "0xf2aa2eae4ceaae88b308fc904975e4ae"
+FreepaiDAO = "0x9960cd7C0A0C353336780F69400F00cf"
+
+[dependencies]
+StarcoinFramework = {git = "https://github.com/starcoinorg/starcoin-framework.git", rev="cf1deda180af40a8b3e26c0c7b548c4c290cd7e7"}

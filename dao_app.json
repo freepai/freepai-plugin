@@ -1,0 +1,8 @@
+{
+    "id": 1,
+    "name": "free-plugin",
+    "version": "v0.1.0",
+    "icon": "ipfs://xxxxxxxxx/xxxxxxx.svg",
+    "contact": "./constract/Move.toml",
+    "web": "./web/package.json"
+}

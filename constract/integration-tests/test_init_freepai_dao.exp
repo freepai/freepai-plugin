@@ -2,7 +2,7 @@ processed 4 tasks
 
 task 2 'run'. lines 5-13:
 {
-  "gas_used": 90590,
+  "gas_used": 90066,
   "status": {
     "Keep": "Executed"
   }
@@ -11,11 +11,6 @@ task 2 'run'. lines 5-13:
 task 3 'view'. lines 15-15:
 key 0x9960cd7c0a0c353336780f69400f00cf::FreepaiDAO::FreepaiDAO {
     name: 4672656570616944414f
-    signer_cap: store 0x00000000000000000000000000000001::Account::SignerCapability {
-        addr: 9960cd7c0a0c353336780f69400f00cf
-    }
-    next_member_id: 1
-    next_proposal_id: 1
     installed_plugins: [
     ]
 }

@@ -1,0 +1,18 @@
+{
+    "id": 1,
+    "name": "proposal-plugin",
+    "version": "v0.1.0",
+    "icon": "ipfs://xxxxxxxxx/xxxxxxx.svg",
+    "implements": [
+        "0x1::ExtensionPoint::IApp"
+     ],
+    "depends": [
+        "0x1::Starcoin::IToken"
+    ], 
+    "required_caps": [
+        "0x1::DAOSpace::DAOUpgradeModuleCap",
+        "0x1::DAOSpace::DAOMemberCap"
+    ],
+    "contact": "./constract/Move.toml",
+    "web": "./web/package.json"
+}

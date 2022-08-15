@@ -17,7 +17,7 @@ module FreepaiDAO::FreepaiDAO {
     struct InstalledPluginInfo has store {
         plugin_id: u64,
         plugin_version: u64,
-        granted_caps: vector<CapType>,
+        granted_caps: vector<u8>,
     }
 
     struct FreepaiDAO has key {
@@ -54,7 +54,7 @@ module FreepaiDAO::FreepaiDAO {
 
     
     /// Install plugin with DAOInstallPluginCap
-    public fun install_plugin(plugin_id:u64, plugin_version: u64, granted_caps: vector<CapType>) acquires FreepaiDAO {
+    public(script) fun install_plugin(plugin_id:u64, plugin_version: u64, granted_caps: vector<u8>) acquires FreepaiDAO {
         assert_no_repeat(&granted_caps);
         
         let dao = borrow_global_mut<FreepaiDAO>(CONTRACT_ACCOUNT);

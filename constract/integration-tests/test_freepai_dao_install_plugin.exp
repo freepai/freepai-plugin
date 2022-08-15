@@ -1,8 +1,8 @@
-processed 7 tasks
+processed 10 tasks
 
 task 2 'run'. lines 5-13:
 {
-  "gas_used": 90590,
+  "gas_used": 90066,
   "status": {
     "Keep": "Executed"
   }
@@ -11,40 +11,51 @@ task 2 'run'. lines 5-13:
 task 3 'view'. lines 15-15:
 key 0x9960cd7c0a0c353336780f69400f00cf::FreepaiDAO::FreepaiDAO {
     name: 4672656570616944414f
-    signer_cap: store 0x00000000000000000000000000000001::Account::SignerCapability {
-        addr: 9960cd7c0a0c353336780f69400f00cf
-    }
-    next_member_id: 1
-    next_proposal_id: 1
     installed_plugins: [
     ]
 }
 
-task 5 'run'. lines 19-31:
+task 5 'run'. lines 19-32:
 {
-  "gas_used": 46595,
+  "gas_used": 53558,
   "status": {
     "Keep": "Executed"
   }
 }
 
-task 6 'view'. lines 33-33:
+task 6 'view'. lines 34-34:
 key 0x9960cd7c0a0c353336780f69400f00cf::FreepaiDAO::FreepaiDAO {
     name: 4672656570616944414f
-    signer_cap: store 0x00000000000000000000000000000001::Account::SignerCapability {
-        addr: 9960cd7c0a0c353336780f69400f00cf
-    }
-    next_member_id: 1
-    next_proposal_id: 1
     installed_plugins: [
         store 0x9960cd7c0a0c353336780f69400f00cf::FreepaiDAO::InstalledPluginInfo {
             plugin_id: 1
             plugin_version: 1
-            granted_caps: [
-                copy drop store 0x9960cd7c0a0c353336780f69400f00cf::FreepaiDAO::CapType {
-                    code: 1u8
-                },
-            ]
+            granted_caps: 0102
+        },
+    ]
+}
+
+task 8 'run'. lines 38-51:
+{
+  "gas_used": 57665,
+  "status": {
+    "Keep": "Executed"
+  }
+}
+
+task 9 'view'. lines 53-53:
+key 0x9960cd7c0a0c353336780f69400f00cf::FreepaiDAO::FreepaiDAO {
+    name: 4672656570616944414f
+    installed_plugins: [
+        store 0x9960cd7c0a0c353336780f69400f00cf::FreepaiDAO::InstalledPluginInfo {
+            plugin_id: 1
+            plugin_version: 1
+            granted_caps: 0102
+        },
+        store 0x9960cd7c0a0c353336780f69400f00cf::FreepaiDAO::InstalledPluginInfo {
+            plugin_id: 2
+            plugin_version: 1
+            granted_caps: 0304
         },
     ]
 }

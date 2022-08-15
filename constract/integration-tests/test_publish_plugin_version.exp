@@ -16,98 +16,77 @@ store key 0xf2aa2eae4ceaae88b308fc904975e4ae::PluginMarketplace::PluginRegistry 
 }
 
 task 5 'run'. lines 19-27:
-{
-  "gas_used": 187241,
-  "status": {
-    "Keep": "Executed"
-  }
-}
+Error: error[E04007]: incompatible types
+   ┌─ /tmp/.tmpBuetqi:23:9
+   │
+22 │     fun main(sender: signer) {
+   │                      ------ Given: 'signer'
+23 │         PluginMarketplace::register_plugin(sender, b"member_manager_plugin", b"ipfs:://xxxxxx");
+   │         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Invalid call of 'FreePlugin::PluginMarketplace::register_plugin'. Invalid argument for parameter 'a0'
+   │
+   ┌─ /tmp/.tmp2NaCvw:57:43
+   │
+57 │     native public fun register_plugin(a0: &signer, a1: vector<u8>, a2: vector<u8>): u64;
+   │                                           ------- Expected: '&signer'
+
+
 
 task 6 'view'. lines 29-29:
 store key 0xf2aa2eae4ceaae88b308fc904975e4ae::PluginMarketplace::PluginRegistry {
-    next_plugin_id: 2
+    next_plugin_id: 1
     plugins: [
-        store 0xf2aa2eae4ceaae88b308fc904975e4ae::PluginMarketplace::PluginInfo {
-            id: 1
-            name: 6d656d6265725f6d616e616765725f706c7567696e
-            describe: 697066733a3a2f2f787878787878
-            git_repo: 
-            next_version_number: 1
-            versions: [
-            ]
-            stars: [
-            ]
-            comments: [
-            ]
-            created_at: 10000
-            update_at: 10000
-        },
     ]
 }
 
 task 7 'run'. lines 31-53:
-{
-  "gas_used": 144490,
-  "status": {
-    "Keep": "Executed"
-  }
-}
+Error: error[E04007]: incompatible types
+   ┌─ /tmp/.tmpO6rENj:38:9
+   │  
+35 │       fun main(sender: signer) {
+   │                        ------ Given: 'signer'
+   ·  
+38 │ ╭         PluginMarketplace::publish_plugin_version(
+39 │ │             sender, 
+40 │ │             1,
+41 │ │             b"v0.1.0", 
+   · │
+47 │ │             b"ipfs:://xxxxxx"
+48 │ │         );
+   │ ╰─────────^ Invalid call of 'FreePlugin::PluginMarketplace::publish_plugin_version'. Invalid argument for parameter 'a0'
+   │  
+   ┌─ /tmp/.tmp2NaCvw:56:50
+   │
+56 │     native public fun publish_plugin_version(a0: &signer, a1: u64, a2: vector<u8>, a3: vector<vector<u8>>, a4: vector<vector<u8>>, a5: vector<vector<u8>>, a6: vector<vector<u8>>, a7: vector<u8>, a8: vector<u8>);
+   │                                                  ------- Expected: '&signer'
+
+
 
 task 8 'view'. lines 55-55:
 store key 0xf2aa2eae4ceaae88b308fc904975e4ae::PluginMarketplace::PluginRegistry {
-    next_plugin_id: 2
+    next_plugin_id: 1
     plugins: [
-        store 0xf2aa2eae4ceaae88b308fc904975e4ae::PluginMarketplace::PluginInfo {
-            id: 1
-            name: 6d656d6265725f6d616e616765725f706c7567696e
-            describe: 697066733a3a2f2f787878787878
-            git_repo: 
-            next_version_number: 2
-            versions: [
-                copy drop store 0xf2aa2eae4ceaae88b308fc904975e4ae::PluginMarketplace::PluginVersion {
-                    number: 1
-                    version: 76302e312e30
-                    required_caps: [
-                        6d656d6265725f6d616e616765725f706c7567696e,
-                    ]
-                    export_caps: [
-                        6d656d6265725f6d616e616765725f706c7567696e,
-                    ]
-                    implement_extpoints: [
-                        6d656d6265725f6d616e616765725f706c7567696e,
-                    ]
-                    depend_extpoints: [
-                        6d656d6265725f6d616e616765725f706c7567696e,
-                    ]
-                    contract_module: 3078313a3a506c7567696e41
-                    js_entry_uri: 697066733a3a2f2f787878787878
-                    created_at: 10000
-                },
-            ]
-            stars: [
-            ]
-            comments: [
-            ]
-            created_at: 10000
-            update_at: 10000
-        },
     ]
 }
 
 task 9 'run'. lines 57-79:
-{
-  "gas_used": 72609,
-  "status": {
-    "Keep": {
-      "MoveAbort": [
-        {
-          "Module": {
-            "address": "0xf2aa2eae4ceaae88b308fc904975e4ae",
-            "name": "PluginMarketplace"
-          }
-        },
-        26369
-      ]
-    }
-  }
-}
+Error: error[E04007]: incompatible types
+   ┌─ /tmp/.tmpqKiSxx:64:9
+   │  
+61 │       fun main(sender: signer) {
+   │                        ------ Given: 'signer'
+   ·  
+64 │ ╭         PluginMarketplace::publish_plugin_version(
+65 │ │             sender, 
+66 │ │             2,
+67 │ │             b"v0.1.0", 
+   · │
+73 │ │             b"ipfs:://xxxxxx"
+74 │ │         );
+   │ ╰─────────^ Invalid call of 'FreePlugin::PluginMarketplace::publish_plugin_version'. Invalid argument for parameter 'a0'
+   │  
+   ┌─ /tmp/.tmp2NaCvw:56:50
+   │
+56 │     native public fun publish_plugin_version(a0: &signer, a1: u64, a2: vector<u8>, a3: vector<vector<u8>>, a4: vector<vector<u8>>, a5: vector<vector<u8>>, a6: vector<vector<u8>>, a7: vector<u8>, a8: vector<u8>);
+   │                                                  ------- Expected: '&signer'
+
+

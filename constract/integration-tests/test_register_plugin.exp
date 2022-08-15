@@ -16,76 +16,47 @@ store key 0xf2aa2eae4ceaae88b308fc904975e4ae::PluginMarketplace::PluginRegistry 
 }
 
 task 5 'run'. lines 19-27:
-{
-  "gas_used": 187241,
-  "status": {
-    "Keep": "Executed"
-  }
-}
+Error: error[E04007]: incompatible types
+   ┌─ /tmp/.tmp5iyD4Q:23:9
+   │
+22 │     fun main(sender: signer) {
+   │                      ------ Given: 'signer'
+23 │         PluginMarketplace::register_plugin(sender, b"member_manager_plugin", b"ipfs:://xxxxxx");
+   │         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Invalid call of 'FreePlugin::PluginMarketplace::register_plugin'. Invalid argument for parameter 'a0'
+   │
+   ┌─ /tmp/.tmpOY2Eof:57:43
+   │
+57 │     native public fun register_plugin(a0: &signer, a1: vector<u8>, a2: vector<u8>): u64;
+   │                                           ------- Expected: '&signer'
+
+
 
 task 6 'view'. lines 29-29:
 store key 0xf2aa2eae4ceaae88b308fc904975e4ae::PluginMarketplace::PluginRegistry {
-    next_plugin_id: 2
+    next_plugin_id: 1
     plugins: [
-        store 0xf2aa2eae4ceaae88b308fc904975e4ae::PluginMarketplace::PluginInfo {
-            id: 1
-            name: 6d656d6265725f6d616e616765725f706c7567696e
-            describe: 697066733a3a2f2f787878787878
-            git_repo: 
-            next_version_number: 1
-            versions: [
-            ]
-            stars: [
-            ]
-            comments: [
-            ]
-            created_at: 10000
-            update_at: 10000
-        },
     ]
 }
 
 task 8 'run'. lines 33-41:
-{
-  "gas_used": 187180,
-  "status": {
-    "Keep": "Executed"
-  }
-}
+Error: error[E04007]: incompatible types
+   ┌─ /tmp/.tmpVTSrIU:37:9
+   │
+36 │     fun main(sender: signer) {
+   │                      ------ Given: 'signer'
+37 │         PluginMarketplace::register_plugin(sender, b"stake_manager_plugin", b"ipfs:://xxxxxx");
+   │         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Invalid call of 'FreePlugin::PluginMarketplace::register_plugin'. Invalid argument for parameter 'a0'
+   │
+   ┌─ /tmp/.tmpOY2Eof:57:43
+   │
+57 │     native public fun register_plugin(a0: &signer, a1: vector<u8>, a2: vector<u8>): u64;
+   │                                           ------- Expected: '&signer'
+
+
 
 task 9 'view'. lines 43-43:
 store key 0xf2aa2eae4ceaae88b308fc904975e4ae::PluginMarketplace::PluginRegistry {
-    next_plugin_id: 3
+    next_plugin_id: 1
     plugins: [
-        store 0xf2aa2eae4ceaae88b308fc904975e4ae::PluginMarketplace::PluginInfo {
-            id: 1
-            name: 6d656d6265725f6d616e616765725f706c7567696e
-            describe: 697066733a3a2f2f787878787878
-            git_repo: 
-            next_version_number: 1
-            versions: [
-            ]
-            stars: [
-            ]
-            comments: [
-            ]
-            created_at: 10000
-            update_at: 10000
-        },
-        store 0xf2aa2eae4ceaae88b308fc904975e4ae::PluginMarketplace::PluginInfo {
-            id: 2
-            name: 7374616b655f6d616e616765725f706c7567696e
-            describe: 697066733a3a2f2f787878787878
-            git_repo: 
-            next_version_number: 1
-            versions: [
-            ]
-            stars: [
-            ]
-            comments: [
-            ]
-            created_at: 10000
-            update_at: 10000
-        },
     ]
 }
