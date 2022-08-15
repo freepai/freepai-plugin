@@ -1,0 +1,11 @@
+[package]
+name = "FreepaiDAO"
+version = "0.1.0"
+
+[addresses]
+StarcoinFramework = "0x1"
+FreepaiDAO = "0x9960cd7C0A0C353336780F69400F00cf"
+
+[dependencies]
+StarcoinFramework = {git = "https://github.com/starcoinorg/starcoin-framework.git", rev="cf1deda180af40a8b3e26c0c7b548c4c290cd7e7"}
+FreePlugin = {local="../../"}

@@ -1,0 +1,113 @@
+processed 10 tasks
+
+task 2 'run'. lines 5-13:
+{
+  "gas_used": 151705,
+  "status": {
+    "Keep": "Executed"
+  }
+}
+
+task 3 'view'. lines 15-15:
+store key 0xf2aa2eae4ceaae88b308fc904975e4ae::PluginMarketplace::PluginRegistry {
+    next_plugin_id: 1
+    plugins: [
+    ]
+}
+
+task 5 'run'. lines 19-27:
+{
+  "gas_used": 187255,
+  "status": {
+    "Keep": "Executed"
+  }
+}
+
+task 6 'view'. lines 29-29:
+store key 0xf2aa2eae4ceaae88b308fc904975e4ae::PluginMarketplace::PluginRegistry {
+    next_plugin_id: 2
+    plugins: [
+        store 0xf2aa2eae4ceaae88b308fc904975e4ae::PluginMarketplace::PluginInfo {
+            id: 1
+            name: 6d656d6265725f6d616e616765725f706c7567696e
+            describe: 697066733a3a2f2f787878787878
+            git_repo: 
+            next_version_number: 1
+            versions: [
+            ]
+            stars: [
+            ]
+            comments: [
+            ]
+            created_at: 10000
+            update_at: 10000
+        },
+    ]
+}
+
+task 7 'run'. lines 31-53:
+{
+  "gas_used": 144470,
+  "status": {
+    "Keep": "Executed"
+  }
+}
+
+task 8 'view'. lines 55-55:
+store key 0xf2aa2eae4ceaae88b308fc904975e4ae::PluginMarketplace::PluginRegistry {
+    next_plugin_id: 2
+    plugins: [
+        store 0xf2aa2eae4ceaae88b308fc904975e4ae::PluginMarketplace::PluginInfo {
+            id: 1
+            name: 6d656d6265725f6d616e616765725f706c7567696e
+            describe: 697066733a3a2f2f787878787878
+            git_repo: 
+            next_version_number: 2
+            versions: [
+                copy drop store 0xf2aa2eae4ceaae88b308fc904975e4ae::PluginMarketplace::PluginVersion {
+                    number: 1
+                    version: 76302e312e30
+                    required_caps: [
+                        6d656d6265725f6d616e616765725f706c7567696e,
+                    ]
+                    export_caps: [
+                        6d656d6265725f6d616e616765725f706c7567696e,
+                    ]
+                    implement_extpoints: [
+                        6d656d6265725f6d616e616765725f706c7567696e,
+                    ]
+                    depend_extpoints: [
+                        6d656d6265725f6d616e616765725f706c7567696e,
+                    ]
+                    contract_module: 3078313a3a506c7567696e41
+                    js_entry_uri: 697066733a3a2f2f787878787878
+                    created_at: 10000
+                },
+            ]
+            stars: [
+            ]
+            comments: [
+            ]
+            created_at: 10000
+            update_at: 10000
+        },
+    ]
+}
+
+task 9 'run'. lines 57-79:
+{
+  "gas_used": 72589,
+  "status": {
+    "Keep": {
+      "MoveAbort": [
+        {
+          "Module": {
+            "address": "0xf2aa2eae4ceaae88b308fc904975e4ae",
+            "name": "PluginMarketplace"
+          }
+        },
+        26369
+      ]
+    }
+  }
+}
