@@ -17,14 +17,14 @@ task 4 'run'. lines 17-25:
 }
 
 task 5 'view'. lines 27-27:
-store key 0xf2aa2eae4ceaae88b308fc904975e4ae::ExtensionPoint::Registry {
+store key 0x7da9cd8048a4620fda9e22977750c517::ExtensionPoint::Registry {
     next_id: 2
     items: [
-        store key 0xf2aa2eae4ceaae88b308fc904975e4ae::ExtensionPoint::ExtensionPoint {
+        store key 0x7da9cd8048a4620fda9e22977750c517::ExtensionPoint::ExtensionPoint {
             id: 1
             name: 3078313a3a457874656e73696f6e506f696e743a3a49417070
             versions: [
-                store 0xf2aa2eae4ceaae88b308fc904975e4ae::ExtensionPoint::Version {
+                store 0x7da9cd8048a4620fda9e22977750c517::ExtensionPoint::Version {
                     code: 1
                     describe: 697066733a3a2f2f787878787878
                     protobuf: 697066733a3a2f2f787878787878
@@ -45,14 +45,14 @@ task 7 'run'. lines 31-39:
 }
 
 task 8 'view'. lines 41-41:
-store key 0xf2aa2eae4ceaae88b308fc904975e4ae::ExtensionPoint::Registry {
+store key 0x7da9cd8048a4620fda9e22977750c517::ExtensionPoint::Registry {
     next_id: 3
     items: [
-        store key 0xf2aa2eae4ceaae88b308fc904975e4ae::ExtensionPoint::ExtensionPoint {
+        store key 0x7da9cd8048a4620fda9e22977750c517::ExtensionPoint::ExtensionPoint {
             id: 1
             name: 3078313a3a457874656e73696f6e506f696e743a3a49417070
             versions: [
-                store 0xf2aa2eae4ceaae88b308fc904975e4ae::ExtensionPoint::Version {
+                store 0x7da9cd8048a4620fda9e22977750c517::ExtensionPoint::Version {
                     code: 1
                     describe: 697066733a3a2f2f787878787878
                     protobuf: 697066733a3a2f2f787878787878
@@ -61,11 +61,11 @@ store key 0xf2aa2eae4ceaae88b308fc904975e4ae::ExtensionPoint::Registry {
             ]
             created_at: 10000
         },
-        store key 0xf2aa2eae4ceaae88b308fc904975e4ae::ExtensionPoint::ExtensionPoint {
+        store key 0x7da9cd8048a4620fda9e22977750c517::ExtensionPoint::ExtensionPoint {
             id: 2
             name: 3078313a3a457874656e73696f6e506f696e743a3a49417070
             versions: [
-                store 0xf2aa2eae4ceaae88b308fc904975e4ae::ExtensionPoint::Version {
+                store 0x7da9cd8048a4620fda9e22977750c517::ExtensionPoint::Version {
                     code: 1
                     describe: 697066733a3a2f2f787878787878
                     protobuf: 697066733a3a2f2f787878787878

@@ -9,7 +9,7 @@ task 2 'run'. lines 5-13:
 }
 
 task 3 'view'. lines 15-15:
-store key 0xf2aa2eae4ceaae88b308fc904975e4ae::ExtensionPoint::Registry {
+store key 0x7da9cd8048a4620fda9e22977750c517::ExtensionPoint::Registry {
     next_id: 1
     items: [
     ]
@@ -23,7 +23,7 @@ task 4 'run'. lines 17-24:
       "MoveAbort": [
         {
           "Module": {
-            "address": "0xf2aa2eae4ceaae88b308fc904975e4ae",
+            "address": "0x7da9cd8048a4620fda9e22977750c517",
             "name": "ExtensionPoint"
           }
         },
@@ -41,7 +41,7 @@ task 6 'run'. lines 28-35:
       "MoveAbort": [
         {
           "Module": {
-            "address": "0xf2aa2eae4ceaae88b308fc904975e4ae",
+            "address": "0x7da9cd8048a4620fda9e22977750c517",
             "name": "ExtensionPoint"
           }
         },

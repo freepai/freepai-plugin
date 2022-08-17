@@ -1,4 +1,4 @@
-//# init -n test --public-keys FreePlugin=0x98826ab91a9a5d85dec536418090aa6342991bc8f947613721c8165e7102b132
+//# init -n test --public-keys FreePlugin=0x562712dad78be5126ac8afcb7e8d3d9385ba6dbc77dbc7fcd8cd4dc4bbf20286
 
 //# faucet --addr FreePlugin --amount 10000000000000
 
@@ -24,7 +24,7 @@ script {
 }
 // check: EXECUTED
 
-//# view --address FreePlugin --resource 0xf2aa2eae4ceaae88b308fc904975e4ae::ExtensionPoint::Registry
+//# view --address FreePlugin --resource 0x7dA9Cd8048A4620fda9e22977750C517::ExtensionPoint::Registry
 
 //# faucet --addr alice --amount 2000000000
 
@@ -38,4 +38,4 @@ script {
 }
 // check: EXECUTED
 
-//# view --address FreePlugin --resource 0xf2aa2eae4ceaae88b308fc904975e4ae::ExtensionPoint::Registry
+//# view --address FreePlugin --resource 0x7dA9Cd8048A4620fda9e22977750C517::ExtensionPoint::Registry

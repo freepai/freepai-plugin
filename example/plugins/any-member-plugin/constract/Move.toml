@@ -4,7 +4,7 @@ version = "0.1.0"
 
 [addresses]
 StarcoinFramework = "0x1"
-FreePlugin = "0xf2aa2eae4ceaae88b308fc904975e4ae"
+FreePlugin = "0x7dA9Cd8048A4620fda9e22977750C517"
 FreepaiDAO = "0x9960cd7C0A0C353336780F69400F00cf"
 
 [dependencies]

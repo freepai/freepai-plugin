@@ -9,7 +9,7 @@ task 2 'run'. lines 5-13:
 }
 
 task 3 'view'. lines 15-15:
-store key 0xf2aa2eae4ceaae88b308fc904975e4ae::PluginMarketplace::PluginRegistry {
+store key 0x7da9cd8048a4620fda9e22977750c517::PluginMarketplace::PluginRegistry {
     next_plugin_id: 1
     plugins: [
     ]
@@ -24,10 +24,10 @@ task 5 'run'. lines 19-27:
 }
 
 task 6 'view'. lines 29-29:
-store key 0xf2aa2eae4ceaae88b308fc904975e4ae::PluginMarketplace::PluginRegistry {
+store key 0x7da9cd8048a4620fda9e22977750c517::PluginMarketplace::PluginRegistry {
     next_plugin_id: 2
     plugins: [
-        store 0xf2aa2eae4ceaae88b308fc904975e4ae::PluginMarketplace::PluginInfo {
+        store 0x7da9cd8048a4620fda9e22977750c517::PluginMarketplace::PluginInfo {
             id: 1
             name: 6d656d6265725f6d616e616765725f706c7567696e
             describe: 697066733a3a2f2f787878787878
@@ -54,10 +54,10 @@ task 8 'run'. lines 33-41:
 }
 
 task 9 'view'. lines 43-43:
-store key 0xf2aa2eae4ceaae88b308fc904975e4ae::PluginMarketplace::PluginRegistry {
+store key 0x7da9cd8048a4620fda9e22977750c517::PluginMarketplace::PluginRegistry {
     next_plugin_id: 3
     plugins: [
-        store 0xf2aa2eae4ceaae88b308fc904975e4ae::PluginMarketplace::PluginInfo {
+        store 0x7da9cd8048a4620fda9e22977750c517::PluginMarketplace::PluginInfo {
             id: 1
             name: 6d656d6265725f6d616e616765725f706c7567696e
             describe: 697066733a3a2f2f787878787878
@@ -72,7 +72,7 @@ store key 0xf2aa2eae4ceaae88b308fc904975e4ae::PluginMarketplace::PluginRegistry 
             created_at: 10000
             update_at: 10000
         },
-        store 0xf2aa2eae4ceaae88b308fc904975e4ae::PluginMarketplace::PluginInfo {
+        store 0x7da9cd8048a4620fda9e22977750c517::PluginMarketplace::PluginInfo {
             id: 2
             name: 7374616b655f6d616e616765725f706c7567696e
             describe: 697066733a3a2f2f787878787878
