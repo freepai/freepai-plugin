@@ -19,7 +19,7 @@ script {
     use FreePlugin::ExtensionPointScript;
 
     fun main(sender: signer) {
-        ExtensionPointScript::register(sender, b"0x1::ExtensionPoint::IApp", b"ipfs:://xxxxxx", b"ipfs:://xxxxxx");
+        ExtensionPointScript::register(sender, b"0x1::ExtensionPoint::IApp", b"ipfs:://xxxxxx", b"ipfs:://xxxxxx", b"ipfs:://xxxxxx");
     }
 }
 // check: EXECUTED
@@ -33,7 +33,19 @@ script {
     use FreePlugin::ExtensionPointScript;
 
     fun main(sender: signer) {
-        ExtensionPointScript::register(sender, b"0x1::ExtensionPoint::IApp", b"ipfs:://xxxxxx", b"ipfs:://xxxxxx");
+        ExtensionPointScript::register(sender, b"0x1::ExtensionPoint::IApp", b"ipfs:://xxxxxx", b"ipfs:://xxxxxx", b"ipfs:://xxxxxx");
+    }
+}
+// check: EXECUTED
+
+//# view --address FreePlugin --resource 0x7dA9Cd8048A4620fda9e22977750C517::ExtensionPoint::Registry
+
+//# run --signers alice
+script {
+    use FreePlugin::ExtensionPointScript;
+
+    fun main(sender: signer) {
+        ExtensionPointScript::register(sender, b"0x1::ExtensionPoint::IToken", b"ipfs:://xxxxxx", b"ipfs:://xxxxxx", b"ipfs:://xxxxxx");
     }
 }
 // check: EXECUTED

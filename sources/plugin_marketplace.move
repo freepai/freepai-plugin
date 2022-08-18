@@ -13,8 +13,9 @@ module FreePlugin::PluginMarketplace {
     const ERR_NOT_CONTRACT_OWNER: u64 = 101;
     const ERR_NOT_FOUND_PLUGIN: u64 = 102;
     const ERR_EXPECT_PLUGIN_NFT: u64 = 103;
+    const ERR_PLUGIN_NAME_ALREADY_EXISTS: u64 = 104;
 
-    struct PluginVersion has store, copy, drop {
+    struct PluginVersion has store {
         number: u64, //Numeric version number, such as 1, 2, 3
         version: vector<u8>, //Plugin version number, e.g. v0.1.1
         required_caps: vector<vector<u8>>, //ability to depend
@@ -26,12 +27,12 @@ module FreePlugin::PluginMarketplace {
         created_at: u64, //Plugin creation time
     }
     
-    struct Star has store, copy, drop {
+    struct Star has store {
         addr: address, //Star's wallet address, which can be a short address, such as zhangsan.stc
         created_at: u64, //creation time
     }
     
-    struct Comment has store, copy, drop {
+    struct Comment has store {
         addr: address, //The commenter's wallet address, which can be a short address, such as zhangsan.stc
         content: vector<u8>, //comments
         created_at: u64, //creation time
@@ -68,8 +69,7 @@ module FreePlugin::PluginMarketplace {
         nft_metadata: NFT::Metadata,
     }
 
-    fun next_plugin_id(): u64 acquires PluginRegistry {
-        let plugin_registry = borrow_global_mut<PluginRegistry>(CONTRACT_ACCOUNT);
+    fun next_plugin_id(plugin_registry: &mut PluginRegistry): u64 {
         let plugin_id = plugin_registry.next_plugin_id;
         plugin_registry.next_plugin_id = plugin_id + 1;
         plugin_id
@@ -93,6 +93,27 @@ module FreePlugin::PluginMarketplace {
         loop {
             let plugin = Vector::borrow(c, idx);
             if (plugin.id == id) {
+                return Option::some(idx)
+            };
+            if (idx == 0) {
+                return Option::none()
+            };
+            idx = idx - 1;
+        }
+    }
+
+    fun find_by_name(
+        c: &vector<PluginInfo>,
+        name: vector<u8>
+    ): Option<u64> {
+        let len = Vector::length(c);
+        if (len == 0) {
+            return Option::none()
+        };
+        let idx = len - 1;
+        loop {
+            let plugin = Vector::borrow(c, idx);
+            if (*&plugin.name == *&name) {
                 return Option::some(idx)
             };
             if (idx == 0) {
@@ -138,9 +159,9 @@ module FreePlugin::PluginMarketplace {
         assert!(Signer::address_of(sender)==CONTRACT_ACCOUNT, Errors::requires_address(ERR_NOT_CONTRACT_OWNER));
         assert!(!exists<PluginRegistry>(Signer::address_of(sender)), Errors::already_published(ERR_ALREADY_INITIALIZED));
 
-        let nft_name = b"FEP";
+        let nft_name = b"PO";
         let nft_image = b"SVG image";
-        let nft_description = b"SVG image";
+        let nft_description = b"The plugin owner";
         let basemeta = NFT::new_meta_with_image_data(nft_name, nft_image, nft_description);
         let basemeta_bak = *&basemeta;
         NFT::register_v2<PluginOwnerNFTMeta>(sender, basemeta);
@@ -157,9 +178,11 @@ module FreePlugin::PluginMarketplace {
     }
 
     public fun register_plugin(sender: &signer, name: vector<u8>, describe: vector<u8>): u64 acquires PluginRegistry, PluginOwnerNFTMintCapHolder {
-        let plugin_id = next_plugin_id();
         let plugin_registry = borrow_global_mut<PluginRegistry>(CONTRACT_ACCOUNT);
+        let idx = find_by_name(&plugin_registry.plugins, *&name);
+        assert!(Option::is_none(&idx), Errors::invalid_argument(ERR_PLUGIN_NAME_ALREADY_EXISTS));
 
+        let plugin_id = next_plugin_id(plugin_registry);
         Vector::push_back<PluginInfo>(&mut plugin_registry.plugins, PluginInfo{
             id: plugin_id, 
             name: name, 
@@ -200,7 +223,6 @@ module FreePlugin::PluginMarketplace {
         ensure_exists_plugin_nft(Signer::address_of(sender), plugin_id);
 
         let plugin_registry = borrow_global_mut<PluginRegistry>(CONTRACT_ACCOUNT);
-
         let idx = find_by_id(&plugin_registry.plugins, plugin_id);
         assert!(Option::is_some(&idx), Errors::invalid_argument(ERR_NOT_FOUND_PLUGIN));
 

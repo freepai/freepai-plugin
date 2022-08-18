@@ -41,3 +41,15 @@ script {
 // check: EXECUTED
 
 //# view --address FreePlugin --resource 0x7dA9Cd8048A4620fda9e22977750C517::PluginMarketplace::PluginRegistry
+
+//# run --signers alice
+script {
+    use FreePlugin::PluginMarketplaceScript;
+
+    fun main(sender: signer) {
+        PluginMarketplaceScript::register_plugin(sender, b"stake_manager_plugin", b"ipfs:://xxxxxx");
+    }
+}
+// check: EXECUTED
+
+//# view --address FreePlugin --resource 0x7dA9Cd8048A4620fda9e22977750C517::PluginMarketplace::PluginRegistry
