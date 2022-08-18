@@ -4,10 +4,10 @@
 
 //# run --signers FreePlugin
 script {
-    use FreePlugin::ExtensionPoint;
+    use FreePlugin::ExtensionPointScript;
 
     fun main(sender: signer) {
-        ExtensionPoint::initialize(sender);
+        ExtensionPointScript::initialize(sender);
     }
 }
 // check: EXECUTED
@@ -16,10 +16,10 @@ script {
 
 //# run --signers bob
 script {
-    use FreePlugin::ExtensionPoint;
+    use FreePlugin::ExtensionPointScript;
 
     fun main(sender: signer) {
-        ExtensionPoint::register(sender, b"0x1::ExtensionPoint::IApp", b"ipfs:://xxxxxx", b"ipfs:://xxxxxx");
+        ExtensionPointScript::register(sender, b"0x1::ExtensionPoint::IApp", b"ipfs:://xxxxxx", b"ipfs:://xxxxxx");
     }
 }
 // check: EXECUTED
@@ -30,10 +30,10 @@ script {
 
 //# run --signers alice
 script {
-    use FreePlugin::ExtensionPoint;
+    use FreePlugin::ExtensionPointScript;
 
     fun main(sender: signer) {
-        ExtensionPoint::register(sender, b"0x1::ExtensionPoint::IApp", b"ipfs:://xxxxxx", b"ipfs:://xxxxxx");
+        ExtensionPointScript::register(sender, b"0x1::ExtensionPoint::IApp", b"ipfs:://xxxxxx", b"ipfs:://xxxxxx");
     }
 }
 // check: EXECUTED

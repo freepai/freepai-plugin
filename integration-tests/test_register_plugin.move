@@ -4,10 +4,10 @@
 
 //# run --signers FreePlugin
 script {
-    use FreePlugin::PluginMarketplace;
+    use FreePlugin::PluginMarketplaceScript;
 
     fun main(sender: signer) {
-        PluginMarketplace::initialize(sender);
+        PluginMarketplaceScript::initialize(sender);
     }
 }
 // check: EXECUTED
@@ -18,10 +18,10 @@ script {
 
 //# run --signers bob
 script {
-    use FreePlugin::PluginMarketplace;
+    use FreePlugin::PluginMarketplaceScript;
 
     fun main(sender: signer) {
-        PluginMarketplace::register_plugin(&sender, b"member_manager_plugin", b"ipfs:://xxxxxx");
+        PluginMarketplaceScript::register_plugin(sender, b"member_manager_plugin", b"ipfs:://xxxxxx");
     }
 }
 // check: EXECUTED
@@ -32,10 +32,10 @@ script {
 
 //# run --signers alice
 script {
-    use FreePlugin::PluginMarketplace;
+    use FreePlugin::PluginMarketplaceScript;
 
     fun main(sender: signer) {
-        PluginMarketplace::register_plugin(&sender, b"stake_manager_plugin", b"ipfs:://xxxxxx");
+        PluginMarketplaceScript::register_plugin(sender, b"stake_manager_plugin", b"ipfs:://xxxxxx");
     }
 }
 // check: EXECUTED

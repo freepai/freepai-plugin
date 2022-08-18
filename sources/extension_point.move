@@ -49,29 +49,29 @@ module FreePlugin::ExtensionPoint {
         extpoint_id
     }
 
-	public(script) fun initialize(sender: signer) {
-        assert!(Signer::address_of(&sender)==CONTRACT_ACCOUNT, Errors::requires_address(ERR_NOT_CONTRACT_OWNER));
-        assert!(!exists<Registry>(Signer::address_of(&sender)), Errors::already_published(ERR_ALREADY_INITIALIZED));
+	public fun initialize(sender: &signer) {
+        assert!(Signer::address_of(sender)==CONTRACT_ACCOUNT, Errors::requires_address(ERR_NOT_CONTRACT_OWNER));
+        assert!(!exists<Registry>(Signer::address_of(sender)), Errors::already_published(ERR_ALREADY_INITIALIZED));
 
         let nft_name = b"FEP";
         let nft_image = b"SVG image";
         let nft_description = b"SVG image";
         let basemeta = NFT::new_meta_with_image_data(nft_name, nft_image, nft_description);
         let basemeta_bak = *&basemeta;
-        NFT::register_v2<RegistryEntry>(&sender, basemeta);
-        let nft_mint_cap = NFT::remove_mint_capability<RegistryEntry>(&sender);
-        move_to(&sender, NFTMintCapHolder{
+        NFT::register_v2<RegistryEntry>(sender, basemeta);
+        let nft_mint_cap = NFT::remove_mint_capability<RegistryEntry>(sender);
+        move_to(sender, NFTMintCapHolder{
             cap: nft_mint_cap,
             nft_metadata: basemeta_bak,
         });
 
-        move_to(&sender, Registry{
+        move_to(sender, Registry{
             next_id: 1,
             items: Vector::empty<ExtensionPoint>(),
         });
     }
 
-    public(script) fun register(sender: signer, name: vector<u8>, describe: vector<u8>, protobuf:vector<u8>) acquires Registry, NFTMintCapHolder {
+    public fun register(sender: &signer, name: vector<u8>, describe: vector<u8>, protobuf:vector<u8>) acquires Registry, NFTMintCapHolder {
         let extpoint_id = next_extpoint_id();
 
         let extpoint_registry = borrow_global_mut<Registry>(CONTRACT_ACCOUNT);
@@ -98,6 +98,19 @@ module FreePlugin::ExtensionPoint {
         };
 
         let nft = NFT::mint_with_cap_v2(CONTRACT_ACCOUNT, &mut nft_mint_cap.cap, *&nft_mint_cap.nft_metadata, meta, NFTBody{});
-        NFTGallery::deposit(&sender, nft);
+        NFTGallery::deposit(sender, nft);
+    }
+}
+
+
+module FreePlugin::ExtensionPointScript {
+    use FreePlugin::ExtensionPoint;
+
+    public(script) fun initialize(sender: signer) {
+        ExtensionPoint::initialize(&sender)
+    }
+
+    public(script) fun register(sender: signer, name: vector<u8>, describe: vector<u8>, protobuf: vector<u8>) {
+        ExtensionPoint::register(&sender, name, describe, protobuf);
     }
 }

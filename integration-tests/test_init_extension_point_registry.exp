@@ -2,7 +2,7 @@ processed 7 tasks
 
 task 2 'run'. lines 5-13:
 {
-  "gas_used": 151705,
+  "gas_used": 154696,
   "status": {
     "Keep": "Executed"
   }
@@ -17,7 +17,7 @@ store key 0x7da9cd8048a4620fda9e22977750c517::ExtensionPoint::Registry {
 
 task 4 'run'. lines 17-24:
 {
-  "gas_used": 21558,
+  "gas_used": 23872,
   "status": {
     "Keep": {
       "MoveAbort": [
@@ -35,7 +35,7 @@ task 4 'run'. lines 17-24:
 
 task 6 'run'. lines 28-35:
 {
-  "gas_used": 15643,
+  "gas_used": 17943,
   "status": {
     "Keep": {
       "MoveAbort": [

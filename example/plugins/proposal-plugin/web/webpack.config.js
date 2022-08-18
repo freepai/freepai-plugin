@@ -1,6 +1,6 @@
 import { DefinePlugin } from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import { getPublicPath, isDevelopment, getPort } from '../util';
+import { getPublicPath, isDevelopment, getPort } from './util';
 const appName = 'dev/react16';
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');

@@ -4,10 +4,10 @@
 
 //# run --signers FreePlugin
 script {
-    use FreePlugin::ExtensionPoint;
+    use FreePlugin::ExtensionPointScript;
 
     fun main(sender: signer) {
-        ExtensionPoint::initialize(sender);
+        ExtensionPointScript::initialize(sender);
     }
 }
 // check: EXECUTED
@@ -16,10 +16,10 @@ script {
 
 //# run --signers FreePlugin
 script {
-    use FreePlugin::ExtensionPoint;
+    use FreePlugin::ExtensionPointScript;
 
     fun main(sender: signer) {
-        ExtensionPoint::initialize(sender);
+        ExtensionPointScript::initialize(sender);
     }
 }
 
@@ -27,10 +27,10 @@ script {
 
 //# run --signers bob
 script {
-    use FreePlugin::ExtensionPoint;
+    use FreePlugin::ExtensionPointScript;
 
     fun main(sender: signer) {
-        ExtensionPoint::initialize(sender);
+        ExtensionPointScript::initialize(sender);
     }
 }
 

@@ -4,10 +4,10 @@
 
 //# run --signers FreePlugin
 script {
-    use FreePlugin::PluginMarketplace;
+    use FreePlugin::PluginMarketplaceScript;
 
     fun main(sender: signer) {
-        PluginMarketplace::initialize(sender);
+        PluginMarketplaceScript::initialize(sender);
     }
 }
 // check: EXECUTED
@@ -18,10 +18,10 @@ script {
 
 //# run --signers bob
 script {
-    use FreePlugin::PluginMarketplace;
+    use FreePlugin::PluginMarketplaceScript;
 
     fun main(sender: signer) {
-        PluginMarketplace::register_plugin(&sender, b"member_manager_plugin", b"ipfs:://xxxxxx");
+        PluginMarketplaceScript::register_plugin(sender, b"member_manager_plugin", b"ipfs:://xxxxxx");
     }
 }
 // check: EXECUTED
@@ -31,14 +31,14 @@ script {
 //# run --signers bob
 script {
     use StarcoinFramework::Vector;
-    use FreePlugin::PluginMarketplace;
+    use FreePlugin::PluginMarketplaceScript;
 
     fun main(sender: signer) {
         let vec = Vector::empty<vector<u8>>();
         Vector::push_back<vector<u8>>(&mut vec, b"member_manager_plugin");
 
-        PluginMarketplace::publish_plugin_version(
-            &sender, 
+        PluginMarketplaceScript::publish_plugin_version(
+            sender, 
             1,
             b"v0.1.0", 
             *&vec, 
@@ -57,14 +57,14 @@ script {
 //# run --signers bob
 script {
     use StarcoinFramework::Vector;
-    use FreePlugin::PluginMarketplace;
+    use FreePlugin::PluginMarketplaceScript;
 
     fun main(sender: signer) {
         let vec = Vector::empty<vector<u8>>();
         Vector::push_back<vector<u8>>(&mut vec, b"member_manager_plugin");
 
-        PluginMarketplace::publish_plugin_version(
-            &sender, 
+        PluginMarketplaceScript::publish_plugin_version(
+            sender, 
             2,
             b"v0.1.0", 
             *&vec, 

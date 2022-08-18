@@ -134,23 +134,23 @@ module FreePlugin::PluginMarketplace {
     }
 
 
-    public(script) fun initialize(sender: signer) {
-        assert!(Signer::address_of(&sender)==CONTRACT_ACCOUNT, Errors::requires_address(ERR_NOT_CONTRACT_OWNER));
-        assert!(!exists<PluginRegistry>(Signer::address_of(&sender)), Errors::already_published(ERR_ALREADY_INITIALIZED));
+    public fun initialize(sender: &signer) {
+        assert!(Signer::address_of(sender)==CONTRACT_ACCOUNT, Errors::requires_address(ERR_NOT_CONTRACT_OWNER));
+        assert!(!exists<PluginRegistry>(Signer::address_of(sender)), Errors::already_published(ERR_ALREADY_INITIALIZED));
 
         let nft_name = b"FEP";
         let nft_image = b"SVG image";
         let nft_description = b"SVG image";
         let basemeta = NFT::new_meta_with_image_data(nft_name, nft_image, nft_description);
         let basemeta_bak = *&basemeta;
-        NFT::register_v2<PluginOwnerNFTMeta>(&sender, basemeta);
-        let nft_mint_cap = NFT::remove_mint_capability<PluginOwnerNFTMeta>(&sender);
-        move_to(&sender, PluginOwnerNFTMintCapHolder{
+        NFT::register_v2<PluginOwnerNFTMeta>(sender, basemeta);
+        let nft_mint_cap = NFT::remove_mint_capability<PluginOwnerNFTMeta>(sender);
+        move_to(sender, PluginOwnerNFTMintCapHolder{
             cap: nft_mint_cap,
             nft_metadata: basemeta_bak,
         });
 
-        move_to(&sender, PluginRegistry{
+        move_to(sender, PluginRegistry{
             next_plugin_id: 1,
             plugins: Vector::empty<PluginInfo>(),
         });
@@ -219,5 +219,42 @@ module FreePlugin::PluginMarketplace {
             js_entry_uri: js_entry_uri,
             created_at: Timestamp::now_milliseconds(),
         });
+    }
+}
+
+
+module FreePlugin::PluginMarketplaceScript {
+    use FreePlugin::PluginMarketplace;
+
+    public(script) fun initialize(sender: signer) {
+        PluginMarketplace::initialize(&sender)
+    }
+
+    public(script) fun register_plugin(sender: signer, name: vector<u8>, describe: vector<u8>) {
+        PluginMarketplace::register_plugin(&sender, name, describe);
+    }
+
+    public(script) fun publish_plugin_version(
+        sender: signer, 
+        plugin_id:u64, 
+        version: vector<u8>,
+        required_caps: vector<vector<u8>>,
+        export_caps: vector<vector<u8>>, 
+        implement_extpoints: vector<vector<u8>>, 
+        depend_extpoints: vector<vector<u8>>,
+        contract_module: vector<u8>, 
+        js_entry_uri: vector<u8>, 
+    ) {
+        PluginMarketplace::publish_plugin_version(
+            &sender, 
+            plugin_id, 
+            version, 
+            required_caps,
+            export_caps,
+            implement_extpoints,
+            depend_extpoints,
+            contract_module,
+            js_entry_uri,
+        )
     }
 }

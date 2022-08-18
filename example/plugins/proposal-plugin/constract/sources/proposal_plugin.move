@@ -25,7 +25,7 @@ module ProposalPlugin::ProposalPlugin {
             *&vec, 
             *&vec, 
             b"0x1::PluginA", 
-            b"ipfs:://xxxxxx"
+            b"ipfs:://Qmdq7ZL46bMAAeffASNZSNETpsqUgVxxY2FCu3eU1WMUEc"
         );
     }
 }
