@@ -1,0 +1,142 @@
+processed 13 tasks
+
+task 2 'run'. lines 5-13:
+{
+  "gas_used": 155134,
+  "status": {
+    "Keep": "Executed"
+  }
+}
+
+task 3 'view'. lines 15-15:
+store key 0x7da9cd8048a4620fda9e22977750c517::PluginMarketplace::PluginRegistry {
+    next_plugin_id: 1
+    plugins: [
+    ]
+}
+
+task 5 'run'. lines 19-27:
+{
+  "gas_used": 210217,
+  "status": {
+    "Keep": "Executed"
+  }
+}
+
+task 6 'view'. lines 29-29:
+store key 0x7da9cd8048a4620fda9e22977750c517::PluginMarketplace::PluginRegistry {
+    next_plugin_id: 2
+    plugins: [
+        store 0x7da9cd8048a4620fda9e22977750c517::PluginMarketplace::PluginInfo {
+            id: 1
+            name: 6d656d6265725f6d616e616765725f706c7567696e
+            describe: 697066733a3a2f2f787878787878
+            git_repo: 
+            next_version_number: 1
+            versions: [
+            ]
+            stars: [
+            ]
+            comments: [
+            ]
+            created_at: 10000
+            update_at: 10000
+        },
+    ]
+}
+
+task 7 'run'. lines 31-53:
+{
+  "gas_used": 157199,
+  "status": {
+    "Keep": "Executed"
+  }
+}
+
+task 8 'view'. lines 55-55:
+store key 0x7da9cd8048a4620fda9e22977750c517::PluginMarketplace::PluginRegistry {
+    next_plugin_id: 2
+    plugins: [
+        store 0x7da9cd8048a4620fda9e22977750c517::PluginMarketplace::PluginInfo {
+            id: 1
+            name: 6d656d6265725f6d616e616765725f706c7567696e
+            describe: 697066733a3a2f2f787878787878
+            git_repo: 
+            next_version_number: 2
+            versions: [
+                store 0x7da9cd8048a4620fda9e22977750c517::PluginMarketplace::PluginVersion {
+                    number: 1
+                    version: 76302e312e30
+                    required_caps: [
+                        6d656d6265725f6d616e616765725f706c7567696e,
+                    ]
+                    export_caps: [
+                        6d656d6265725f6d616e616765725f706c7567696e,
+                    ]
+                    implement_extpoints: [
+                        6d656d6265725f6d616e616765725f706c7567696e,
+                    ]
+                    depend_extpoints: [
+                        6d656d6265725f6d616e616765725f706c7567696e,
+                    ]
+                    contract_module: 3078313a3a506c7567696e41
+                    js_entry_uri: 697066733a3a2f2f787878787878
+                    created_at: 10000
+                },
+            ]
+            stars: [
+            ]
+            comments: [
+            ]
+            created_at: 10000
+            update_at: 10000
+        },
+    ]
+}
+
+task 9 'run'. lines 57-68:
+{
+  "gas_used": 54543,
+  "status": {
+    "Keep": "Executed"
+  }
+}
+
+task 10 'run'. lines 70-81:
+{
+  "gas_used": 53772,
+  "status": {
+    "Keep": {
+      "MoveAbort": [
+        "Script",
+        26881
+      ]
+    }
+  }
+}
+
+task 11 'run'. lines 84-95:
+{
+  "gas_used": 33066,
+  "status": {
+    "Keep": {
+      "MoveAbort": [
+        "Script",
+        26881
+      ]
+    }
+  }
+}
+
+task 12 'run'. lines 97-108:
+{
+  "gas_used": 33066,
+  "status": {
+    "Keep": {
+      "MoveAbort": [
+        "Script",
+        26881
+      ]
+    }
+  }
+}

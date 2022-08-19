@@ -66,8 +66,6 @@ script {
 }
 // check: EXECUTED
 
-//# view --address FreePlugin --resource 0x7dA9Cd8048A4620fda9e22977750C517::PluginMarketplace::PluginRegistry
-
 //# view --address FreepaiDAO --resource 0x9960cd7C0A0C353336780F69400F00cf::FreepaiDAO::FreepaiDAO
 
 //# run --signers FreepaiDAO
@@ -85,7 +83,18 @@ script {
 }
 // check: EXECUTED
 
-//# view --address FreePlugin --resource 0x7dA9Cd8048A4620fda9e22977750C517::PluginMarketplace::PluginRegistry
+//# view --address FreepaiDAO --resource 0x9960cd7C0A0C353336780F69400F00cf::FreepaiDAO::FreepaiDAO
+
+//# run --signers FreepaiDAO
+script {
+    use StarcoinFramework::Vector;
+    use FreepaiDAO::FreepaiDAOScript;
+
+    fun main(sender: signer) {
+        FreepaiDAOScript::uninstall_plugin(sender, 2, 1)
+    }
+}
+// check: EXECUTED
 
 //# view --address FreepaiDAO --resource 0x9960cd7C0A0C353336780F69400F00cf::FreepaiDAO::FreepaiDAO
 
@@ -95,15 +104,9 @@ script {
     use FreepaiDAO::FreepaiDAOScript;
 
     fun main(sender: signer) {
-        let vec = Vector::empty<u8>();
-        Vector::push_back<u8>(&mut vec, 3);
-        Vector::push_back<u8>(&mut vec, 4);
-
-        FreepaiDAOScript::install_plugin(sender, 1, 2, vec)
+        FreepaiDAOScript::uninstall_plugin(sender, 1, 1)
     }
 }
 // check: EXECUTED
-
-//# view --address FreePlugin --resource 0x7dA9Cd8048A4620fda9e22977750C517::PluginMarketplace::PluginRegistry
 
 //# view --address FreepaiDAO --resource 0x9960cd7C0A0C353336780F69400F00cf::FreepaiDAO::FreepaiDAO

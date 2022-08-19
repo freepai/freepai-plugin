@@ -1,33 +1,209 @@
-processed 10 tasks
+processed 19 tasks
 
 task 2 'run'. lines 5-13:
 {
-  "gas_used": 90066,
+  "gas_used": 155134,
   "status": {
     "Keep": "Executed"
   }
 }
 
 task 3 'view'. lines 15-15:
+store key 0x7da9cd8048a4620fda9e22977750c517::PluginMarketplace::PluginRegistry {
+    next_plugin_id: 1
+    plugins: [
+    ]
+}
+
+task 5 'run'. lines 19-27:
+{
+  "gas_used": 210217,
+  "status": {
+    "Keep": "Executed"
+  }
+}
+
+task 6 'view'. lines 29-29:
+store key 0x7da9cd8048a4620fda9e22977750c517::PluginMarketplace::PluginRegistry {
+    next_plugin_id: 2
+    plugins: [
+        store 0x7da9cd8048a4620fda9e22977750c517::PluginMarketplace::PluginInfo {
+            id: 1
+            name: 6d656d6265725f6d616e616765725f706c7567696e
+            describe: 697066733a3a2f2f787878787878
+            git_repo: 
+            next_version_number: 1
+            versions: [
+            ]
+            stars: [
+            ]
+            comments: [
+            ]
+            created_at: 10000
+            update_at: 10000
+        },
+    ]
+}
+
+task 7 'run'. lines 31-53:
+{
+  "gas_used": 157199,
+  "status": {
+    "Keep": "Executed"
+  }
+}
+
+task 8 'view'. lines 55-55:
+store key 0x7da9cd8048a4620fda9e22977750c517::PluginMarketplace::PluginRegistry {
+    next_plugin_id: 2
+    plugins: [
+        store 0x7da9cd8048a4620fda9e22977750c517::PluginMarketplace::PluginInfo {
+            id: 1
+            name: 6d656d6265725f6d616e616765725f706c7567696e
+            describe: 697066733a3a2f2f787878787878
+            git_repo: 
+            next_version_number: 2
+            versions: [
+                store 0x7da9cd8048a4620fda9e22977750c517::PluginMarketplace::PluginVersion {
+                    number: 1
+                    version: 76302e312e30
+                    required_caps: [
+                        6d656d6265725f6d616e616765725f706c7567696e,
+                    ]
+                    export_caps: [
+                        6d656d6265725f6d616e616765725f706c7567696e,
+                    ]
+                    implement_extpoints: [
+                        6d656d6265725f6d616e616765725f706c7567696e,
+                    ]
+                    depend_extpoints: [
+                        6d656d6265725f6d616e616765725f706c7567696e,
+                    ]
+                    contract_module: 3078313a3a506c7567696e41
+                    js_entry_uri: 697066733a3a2f2f787878787878
+                    created_at: 10000
+                },
+            ]
+            stars: [
+            ]
+            comments: [
+            ]
+            created_at: 10000
+            update_at: 10000
+        },
+    ]
+}
+
+task 10 'run'. lines 59-67:
+{
+  "gas_used": 31877,
+  "status": {
+    "Keep": "Executed"
+  }
+}
+
+task 11 'view'. lines 69-69:
+store key 0x7da9cd8048a4620fda9e22977750c517::PluginMarketplace::PluginRegistry {
+    next_plugin_id: 2
+    plugins: [
+        store 0x7da9cd8048a4620fda9e22977750c517::PluginMarketplace::PluginInfo {
+            id: 1
+            name: 6d656d6265725f6d616e616765725f706c7567696e
+            describe: 697066733a3a2f2f787878787878
+            git_repo: 
+            next_version_number: 2
+            versions: [
+                store 0x7da9cd8048a4620fda9e22977750c517::PluginMarketplace::PluginVersion {
+                    number: 1
+                    version: 76302e312e30
+                    required_caps: [
+                        6d656d6265725f6d616e616765725f706c7567696e,
+                    ]
+                    export_caps: [
+                        6d656d6265725f6d616e616765725f706c7567696e,
+                    ]
+                    implement_extpoints: [
+                        6d656d6265725f6d616e616765725f706c7567696e,
+                    ]
+                    depend_extpoints: [
+                        6d656d6265725f6d616e616765725f706c7567696e,
+                    ]
+                    contract_module: 3078313a3a506c7567696e41
+                    js_entry_uri: 697066733a3a2f2f787878787878
+                    created_at: 10000
+                },
+            ]
+            stars: [
+            ]
+            comments: [
+            ]
+            created_at: 10000
+            update_at: 10000
+        },
+    ]
+}
+
+task 12 'view'. lines 71-71:
 key 0x9960cd7c0a0c353336780f69400f00cf::FreepaiDAO::FreepaiDAO {
     name: 4672656570616944414f
     installed_plugins: [
     ]
 }
 
-task 5 'run'. lines 19-32:
+task 13 'run'. lines 73-86:
 {
-  "gas_used": 53558,
+  "gas_used": 121922,
   "status": {
     "Keep": "Executed"
   }
 }
 
-task 6 'view'. lines 34-34:
+task 14 'view'. lines 88-88:
+store key 0x7da9cd8048a4620fda9e22977750c517::PluginMarketplace::PluginRegistry {
+    next_plugin_id: 2
+    plugins: [
+        store 0x7da9cd8048a4620fda9e22977750c517::PluginMarketplace::PluginInfo {
+            id: 1
+            name: 6d656d6265725f6d616e616765725f706c7567696e
+            describe: 697066733a3a2f2f787878787878
+            git_repo: 
+            next_version_number: 2
+            versions: [
+                store 0x7da9cd8048a4620fda9e22977750c517::PluginMarketplace::PluginVersion {
+                    number: 1
+                    version: 76302e312e30
+                    required_caps: [
+                        6d656d6265725f6d616e616765725f706c7567696e,
+                    ]
+                    export_caps: [
+                        6d656d6265725f6d616e616765725f706c7567696e,
+                    ]
+                    implement_extpoints: [
+                        6d656d6265725f6d616e616765725f706c7567696e,
+                    ]
+                    depend_extpoints: [
+                        6d656d6265725f6d616e616765725f706c7567696e,
+                    ]
+                    contract_module: 3078313a3a506c7567696e41
+                    js_entry_uri: 697066733a3a2f2f787878787878
+                    created_at: 10000
+                },
+            ]
+            stars: [
+            ]
+            comments: [
+            ]
+            created_at: 10000
+            update_at: 10000
+        },
+    ]
+}
+
+task 15 'view'. lines 90-90:
 key 0x9960cd7c0a0c353336780f69400f00cf::FreepaiDAO::FreepaiDAO {
     name: 4672656570616944414f
     installed_plugins: [
-        store 0x9960cd7c0a0c353336780f69400f00cf::FreepaiDAO::InstalledPluginInfo {
+        drop store 0x9960cd7c0a0c353336780f69400f00cf::FreepaiDAO::InstalledPluginInfo {
             plugin_id: 1
             plugin_version: 1
             granted_caps: 0102
@@ -35,27 +211,73 @@ key 0x9960cd7c0a0c353336780f69400f00cf::FreepaiDAO::FreepaiDAO {
     ]
 }
 
-task 8 'run'. lines 38-51:
+task 16 'run'. lines 92-105:
 {
-  "gas_used": 57665,
+  "gas_used": 79201,
   "status": {
-    "Keep": "Executed"
+    "Keep": {
+      "MoveAbort": [
+        {
+          "Module": {
+            "address": "0x9960cd7c0a0c353336780f69400f00cf",
+            "name": "FreepaiDAO"
+          }
+        },
+        27137
+      ]
+    }
   }
 }
 
-task 9 'view'. lines 53-53:
+task 17 'view'. lines 107-107:
+store key 0x7da9cd8048a4620fda9e22977750c517::PluginMarketplace::PluginRegistry {
+    next_plugin_id: 2
+    plugins: [
+        store 0x7da9cd8048a4620fda9e22977750c517::PluginMarketplace::PluginInfo {
+            id: 1
+            name: 6d656d6265725f6d616e616765725f706c7567696e
+            describe: 697066733a3a2f2f787878787878
+            git_repo: 
+            next_version_number: 2
+            versions: [
+                store 0x7da9cd8048a4620fda9e22977750c517::PluginMarketplace::PluginVersion {
+                    number: 1
+                    version: 76302e312e30
+                    required_caps: [
+                        6d656d6265725f6d616e616765725f706c7567696e,
+                    ]
+                    export_caps: [
+                        6d656d6265725f6d616e616765725f706c7567696e,
+                    ]
+                    implement_extpoints: [
+                        6d656d6265725f6d616e616765725f706c7567696e,
+                    ]
+                    depend_extpoints: [
+                        6d656d6265725f6d616e616765725f706c7567696e,
+                    ]
+                    contract_module: 3078313a3a506c7567696e41
+                    js_entry_uri: 697066733a3a2f2f787878787878
+                    created_at: 10000
+                },
+            ]
+            stars: [
+            ]
+            comments: [
+            ]
+            created_at: 10000
+            update_at: 10000
+        },
+    ]
+}
+
+task 18 'view'. lines 109-109:
 key 0x9960cd7c0a0c353336780f69400f00cf::FreepaiDAO::FreepaiDAO {
     name: 4672656570616944414f
     installed_plugins: [
-        store 0x9960cd7c0a0c353336780f69400f00cf::FreepaiDAO::InstalledPluginInfo {
+        drop store 0x9960cd7c0a0c353336780f69400f00cf::FreepaiDAO::InstalledPluginInfo {
             plugin_id: 1
             plugin_version: 1
             granted_caps: 0102
-        },
-        store 0x9960cd7c0a0c353336780f69400f00cf::FreepaiDAO::InstalledPluginInfo {
-            plugin_id: 2
-            plugin_version: 1
-            granted_caps: 0304
         },
     ]
 }

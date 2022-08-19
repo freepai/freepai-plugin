@@ -1,0 +1,187 @@
+processed 18 tasks
+
+task 2 'run'. lines 5-13:
+{
+  "gas_used": 155134,
+  "status": {
+    "Keep": "Executed"
+  }
+}
+
+task 3 'view'. lines 15-15:
+store key 0x7da9cd8048a4620fda9e22977750c517::PluginMarketplace::PluginRegistry {
+    next_plugin_id: 1
+    plugins: [
+    ]
+}
+
+task 5 'run'. lines 19-27:
+{
+  "gas_used": 210217,
+  "status": {
+    "Keep": "Executed"
+  }
+}
+
+task 6 'view'. lines 29-29:
+store key 0x7da9cd8048a4620fda9e22977750c517::PluginMarketplace::PluginRegistry {
+    next_plugin_id: 2
+    plugins: [
+        store 0x7da9cd8048a4620fda9e22977750c517::PluginMarketplace::PluginInfo {
+            id: 1
+            name: 6d656d6265725f6d616e616765725f706c7567696e
+            describe: 697066733a3a2f2f787878787878
+            git_repo: 
+            next_version_number: 1
+            versions: [
+            ]
+            stars: [
+            ]
+            comments: [
+            ]
+            created_at: 10000
+            update_at: 10000
+        },
+    ]
+}
+
+task 7 'run'. lines 31-53:
+{
+  "gas_used": 157199,
+  "status": {
+    "Keep": "Executed"
+  }
+}
+
+task 8 'view'. lines 55-55:
+store key 0x7da9cd8048a4620fda9e22977750c517::PluginMarketplace::PluginRegistry {
+    next_plugin_id: 2
+    plugins: [
+        store 0x7da9cd8048a4620fda9e22977750c517::PluginMarketplace::PluginInfo {
+            id: 1
+            name: 6d656d6265725f6d616e616765725f706c7567696e
+            describe: 697066733a3a2f2f787878787878
+            git_repo: 
+            next_version_number: 2
+            versions: [
+                store 0x7da9cd8048a4620fda9e22977750c517::PluginMarketplace::PluginVersion {
+                    number: 1
+                    version: 76302e312e30
+                    required_caps: [
+                        6d656d6265725f6d616e616765725f706c7567696e,
+                    ]
+                    export_caps: [
+                        6d656d6265725f6d616e616765725f706c7567696e,
+                    ]
+                    implement_extpoints: [
+                        6d656d6265725f6d616e616765725f706c7567696e,
+                    ]
+                    depend_extpoints: [
+                        6d656d6265725f6d616e616765725f706c7567696e,
+                    ]
+                    contract_module: 3078313a3a506c7567696e41
+                    js_entry_uri: 697066733a3a2f2f787878787878
+                    created_at: 10000
+                },
+            ]
+            stars: [
+            ]
+            comments: [
+            ]
+            created_at: 10000
+            update_at: 10000
+        },
+    ]
+}
+
+task 10 'run'. lines 59-67:
+{
+  "gas_used": 31877,
+  "status": {
+    "Keep": "Executed"
+  }
+}
+
+task 11 'view'. lines 69-69:
+key 0x9960cd7c0a0c353336780f69400f00cf::FreepaiDAO::FreepaiDAO {
+    name: 4672656570616944414f
+    installed_plugins: [
+    ]
+}
+
+task 12 'run'. lines 71-84:
+{
+  "gas_used": 121922,
+  "status": {
+    "Keep": "Executed"
+  }
+}
+
+task 13 'view'. lines 86-86:
+key 0x9960cd7c0a0c353336780f69400f00cf::FreepaiDAO::FreepaiDAO {
+    name: 4672656570616944414f
+    installed_plugins: [
+        drop store 0x9960cd7c0a0c353336780f69400f00cf::FreepaiDAO::InstalledPluginInfo {
+            plugin_id: 1
+            plugin_version: 1
+            granted_caps: 0102
+        },
+    ]
+}
+
+task 14 'run'. lines 88-97:
+warning[W09001]: unused alias
+   ┌─ C:\Users\yubing\AppData\Local\Temp\.tmpamgG06:90:28
+   │
+90 │     use StarcoinFramework::Vector;
+   │                            ^^^^^^ Unused 'use' of alias 'Vector'. Consider removing it
+
+{
+  "gas_used": 45132,
+  "status": {
+    "Keep": {
+      "MoveAbort": [
+        {
+          "Module": {
+            "address": "0x9960cd7c0a0c353336780f69400f00cf",
+            "name": "FreepaiDAO"
+          }
+        },
+        27398
+      ]
+    }
+  }
+}
+
+task 15 'view'. lines 99-99:
+key 0x9960cd7c0a0c353336780f69400f00cf::FreepaiDAO::FreepaiDAO {
+    name: 4672656570616944414f
+    installed_plugins: [
+        drop store 0x9960cd7c0a0c353336780f69400f00cf::FreepaiDAO::InstalledPluginInfo {
+            plugin_id: 1
+            plugin_version: 1
+            granted_caps: 0102
+        },
+    ]
+}
+
+task 16 'run'. lines 101-110:
+warning[W09001]: unused alias
+    ┌─ C:\Users\yubing\AppData\Local\Temp\.tmpvOsQOl:103:28
+    │
+103 │     use StarcoinFramework::Vector;
+    │                            ^^^^^^ Unused 'use' of alias 'Vector'. Consider removing it
+
+{
+  "gas_used": 71505,
+  "status": {
+    "Keep": "Executed"
+  }
+}
+
+task 17 'view'. lines 112-112:
+key 0x9960cd7c0a0c353336780f69400f00cf::FreepaiDAO::FreepaiDAO {
+    name: 4672656570616944414f
+    installed_plugins: [
+    ]
+}

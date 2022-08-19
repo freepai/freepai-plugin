@@ -4,10 +4,10 @@
 
 //# run --signers FreepaiDAO
 script {
-    use FreepaiDAO::FreepaiDAO;
+    use FreepaiDAO::FreepaiDAOScript;
 
     fun main(sender: signer) {
-        FreepaiDAO::initialize(sender);
+        FreepaiDAOScript::initialize(sender);
     }
 }
 // check: EXECUTED

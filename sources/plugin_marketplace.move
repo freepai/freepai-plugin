@@ -154,7 +154,6 @@ module FreePlugin::PluginMarketplace {
         assert!(has_plugin_nft(sender_addr, plugin_id), Errors::invalid_state(ERR_EXPECT_PLUGIN_NFT));
     }
 
-
     public fun initialize(sender: &signer) {
         assert!(Signer::address_of(sender)==CONTRACT_ACCOUNT, Errors::requires_address(ERR_NOT_CONTRACT_OWNER));
         assert!(!exists<PluginRegistry>(Signer::address_of(sender)), Errors::already_published(ERR_ALREADY_INITIALIZED));
@@ -241,6 +240,21 @@ module FreePlugin::PluginMarketplace {
             js_entry_uri: js_entry_uri,
             created_at: Timestamp::now_milliseconds(),
         });
+    }
+
+    public fun exists_plugin_version(
+        plugin_id: u64, 
+        version_number: u64,
+    ): bool acquires PluginRegistry {
+        let plugin_registry = borrow_global<PluginRegistry>(CONTRACT_ACCOUNT);
+        let idx = find_by_id(&plugin_registry.plugins, plugin_id);
+        if (Option::is_none(&idx)) {
+            return false
+        };
+
+        let i = Option::extract(&mut idx);
+        let plugin = Vector::borrow<PluginInfo>(&plugin_registry.plugins, i);
+        return version_number > 0 && version_number < plugin.next_version_number
     }
 }
 

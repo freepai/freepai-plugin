@@ -4,8 +4,8 @@ version = "0.1.0"
 
 [addresses]
 StarcoinFramework = "0x1"
-ProposalPlugin = "0x7dA9Cd8048A4620fda9e22977750C517"
+ProposalPlugin = "0xbe5454a2475D690890dD4da43d788aD5"
 
 [dependencies]
 StarcoinFramework = {git = "https://github.com/starcoinorg/starcoin-framework.git", rev="cf1deda180af40a8b3e26c0c7b548c4c290cd7e7"}
-FreePlugin = {local = "../../../constract"}
+FreePlugin = {git = "https://github.com/freepai/free-plugin.git", rev="main"}
