@@ -7,7 +7,9 @@ const render = (_ROOT) => {
   ReactDOM.render(<_ROOT />, document.getElementById('root'));
 };
 
-render(RootComponent);
+render(
+  RootComponent
+);
 
 // 开启热更新：
 if ((module as any).hot) {

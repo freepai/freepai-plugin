@@ -5,6 +5,7 @@ import {
   Route,
   Navigate,
 } from 'react-router-dom';
+import { InjectedProvider } from '../../contexts/InjectedProviderContext';
 import { ConfigProvider, Spin } from '@arco-design/web-react';
 import { store } from '../../store';
 import App from '../../components/App';
@@ -18,6 +19,7 @@ const mainHome = 'main/index';
 
 const RootComponent = () => {
   return (
+    <InjectedProvider>
     <ConfigProvider prefixCls={prefixCls}>
       <Router>
         <Routes>
@@ -110,6 +112,7 @@ const RootComponent = () => {
         </Routes>
       </Router>
     </ConfigProvider>
+    </InjectedProvider>
   );
 };
 

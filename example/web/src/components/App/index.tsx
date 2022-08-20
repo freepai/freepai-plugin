@@ -24,6 +24,7 @@ import { subAppMenus as defaultSubAppMenus } from '../constant';
 import logo from '../../static/img/Garfish.png';
 import homeSvg from '../../static/icons/Home.svg';
 import newSvg from '../../static/icons/New.svg';
+import Web3SignIn from '../Web3/web3SignIn';
 import './index.less';
 
 const MenuItem = Menu.Item;
@@ -211,6 +212,7 @@ const App = observer(({ store }: { store: any }) => {
           >
             新增应用
           </Button>
+
         </Header>
         <Layout style={{ padding: '0 24px' }}>
           {
