@@ -11,6 +11,7 @@ import {
   Space,
   Spin,
 } from '@arco-design/web-react';
+import { Grid } from '@arco-design/web-react';
 import {
   IconCaretRight,
   IconCaretLeft,
@@ -24,7 +25,7 @@ import { subAppMenus as defaultSubAppMenus } from '../constant';
 import logo from '../../static/img/Garfish.png';
 import homeSvg from '../../static/icons/Home.svg';
 import newSvg from '../../static/icons/New.svg';
-import Web3SignIn from '../Web3/web3SignIn';
+import StarcoinSignIn from '../Web3/starcoinSignIn';
 import './index.less';
 
 const MenuItem = Menu.Item;
@@ -42,6 +43,9 @@ const formItemLayout = {
     span: 18,
   },
 };
+
+const Row = Grid.Row;
+const Col = Grid.Col;
 
 const App = observer(({ store }: { store: any }) => {
   const navigate = useNavigate();
@@ -213,6 +217,11 @@ const App = observer(({ store }: { store: any }) => {
             新增应用
           </Button>
 
+          <Row style={{ width: '100%' }} justify="end">
+            <Col flex='100px'>
+              <StarcoinSignIn/>
+            </Col>
+         </Row>
         </Header>
         <Layout style={{ padding: '0 24px' }}>
           {

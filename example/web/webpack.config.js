@@ -1,5 +1,5 @@
 import path from 'path';
-import { DefinePlugin } from 'webpack';
+import { DefinePlugin, ProvidePlugin } from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { isDevelopment, getPublicPath, getPort } from './util';
 // const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
@@ -20,6 +20,17 @@ const webpackConfig = {
   },
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
+    fallback: { 
+      crypto: require.resolve('crypto-browserify'),
+      http: require.resolve('stream-http'),
+      https: require.resolve('https-browserify'),
+      stream: require.resolve('stream-browserify'),
+      os: require.resolve('os-browserify/browser'),
+      zlib: require.resolve('browserify-zlib'),
+      process: require.resolve('process/browser'),
+      url: require.resolve("url-polyfill"),
+      assert: require.resolve("assert-polyfill")
+    }
   },
   module: {
     rules: [
@@ -69,6 +80,12 @@ const webpackConfig = {
           },
         ],
       },
+      {
+        test: /\.m?js$/,
+        resolve: {
+          fullySpecified: false, // disable the behaviour
+        },
+      }
     ],
   },
   devServer: {
@@ -89,6 +106,10 @@ const webpackConfig = {
     }),
     new DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+    }),
+    new ProvidePlugin({
+      Buffer: ['buffer', 'Buffer'],
+      process: 'process/browser',
     }),
     // 微前端场景下子应用热更新需要关闭 react-fast-refresh, 否则子应用热更新不会生效
     // isDevelopment && new ReactRefreshWebpackPlugin()
