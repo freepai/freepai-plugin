@@ -26,6 +26,8 @@ import logo from '../../static/img/Garfish.png';
 import homeSvg from '../../static/icons/Home.svg';
 import newSvg from '../../static/icons/New.svg';
 import StarcoinSignIn from '../Web3/starcoinSignIn';
+import { getDaoPlugins } from '../../utils/dao';
+
 import './index.less';
 
 const MenuItem = Menu.Item;
@@ -61,6 +63,24 @@ const App = observer(({ store }: { store: any }) => {
     location.pathname.replace(`/${basename}/`, '').split('/')[0],
   ];
 
+  const registerApp = (res:any) => {
+    Garfish.registerApp({
+      ...res,
+      props: {
+        [res.props.key]: res.props.value,
+      },
+    });
+
+    subAppMenus.push({
+      key: res.name,
+      icon: <img src={newSvg} className="sidebar-item-icon" />,
+      title: `【新增子应用】${res.name}`,
+      path: res.path,
+    });
+
+    setSubAppMenus(subAppMenus);
+  }
+
   // 当 store.counter 变化时，才 emit stateChange
   useEffect(() => {
     if (JSON.parse(storeRef.current).counter !== store.counter) {
@@ -77,6 +97,18 @@ const App = observer(({ store }: { store: any }) => {
       store.setActiveApp(_path);
     }
   }, [location]);
+
+  useEffect(async () => {
+    const daoPlugins:any = await getDaoPlugins();
+
+    for (const plugin in daoPlugins) {
+      registerApp({
+        name: plugin.name,
+        activeWhen: '/react17',
+      })
+    }
+
+  }, []);
 
   const handleCollapsed = useCallback(() => {
     setCollapsed(!collapsed);
