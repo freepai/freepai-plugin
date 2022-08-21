@@ -28,6 +28,9 @@ import newSvg from '../../static/icons/New.svg';
 import StarcoinSignIn from '../Web3/starcoinSignIn';
 import { getDaoPlugins } from '../../utils/dao';
 
+import { loadModule } from '@garfish/remote-module';
+import { IDAO, IApp } from '../../extpoints/dao_app';
+
 import './index.less';
 
 const MenuItem = Menu.Item;
@@ -63,22 +66,32 @@ const App = observer(({ store }: { store: any }) => {
     location.pathname.replace(`/${basename}/`, '').split('/')[0],
   ];
 
-  const registerApp = (res:any) => {
-    Garfish.registerApp({
-      ...res,
-      props: {
-        [res.props.key]: res.props.value,
-      },
-    });
+  const adapter_uri = (res:String) => {
+    if (res.startsWith("ipfs:://")) {
+      const ipfs_cid = res.substring(8)
+      //return `https://ipfs.filebase.io/ipfs/${ipfs_cid}`.toString()
+      return "https://ipfs.filebase.io/ipfs/QmXViHkaid2qxEa2vQQKiPvrDx7mhW24tXnr7jAEwX5GqD"
+    } else {
+      return res.toString()
+    }
+  }
 
-    subAppMenus.push({
-      key: res.name,
-      icon: <img src={newSvg} className="sidebar-item-icon" />,
-      title: `【新增子应用】${res.name}`,
-      path: res.path,
-    });
+  class TheDAO implements IDAO {
+    constructor() {
 
-    setSubAppMenus(subAppMenus);
+    }
+
+    registerApp(app: IApp) {
+  
+      subAppMenus.push({
+        key: app.name,
+        icon: <img src={newSvg} className="sidebar-item-icon" />,
+        title: `【新增子应用】${app.name}`,
+        path: app.activeWhen,
+      });
+  
+      setSubAppMenus(subAppMenus);
+    }
   }
 
   // 当 store.counter 变化时，才 emit stateChange
@@ -99,13 +112,14 @@ const App = observer(({ store }: { store: any }) => {
   }, [location]);
 
   useEffect(async () => {
+    const theDao = new TheDAO()
     const daoPlugins:any = await getDaoPlugins();
 
-    for (const plugin in daoPlugins) {
-      registerApp({
-        name: plugin.name,
-        activeWhen: '/react17',
-      })
+    for (const i in daoPlugins) {
+      const plugin_info = daoPlugins[i];
+
+      const modules = await loadModule(adapter_uri(plugin_info.js_entry_uri));
+      modules?.setup(theDao);
     }
 
   }, []);

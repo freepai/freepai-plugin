@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import { reactBridge } from '@garfish/bridge-react';
 import RootComponent from './root';
 import ErrorBoundary from './ErrorBoundary';
+import { Message } from '@arco-design/web-react';
+import { IDAO } from './extpoints/dao_app';
 
 // 在首次加载和执行时会触发该函数
 // export const provider = (props) => {
@@ -27,6 +29,22 @@ export const provider = reactBridge({
   rootComponent: RootComponent,
   errorBoundary: () => <ErrorBoundary />,
 });
+
+export const setup = (dao: IDAO) => {
+  console.log("plugin setup")
+  Message.info("plugin setup")
+
+  dao.registerApp({
+    name: "proposal_app",
+    activeWhen: "/proposal",
+    entry: RootComponent,
+  })
+}
+
+export const teardown = () => {
+  console.log("plugin teardown")
+  Message.info("plugin teardown")
+}
 
 // 这能够让子应用独立运行起来，以保证后续子应用能脱离主应用独立运行，方便调试、开发
 if (!window.__GARFISH__) {

@@ -1,3 +1,5 @@
+import { getPluginInfo } from './marketplace'
+
 export const FreepaiDAO_Address = "0x9960cd7C0A0C353336780F69400F00cf"
 
 export const getDaoPlugins = async () => {
@@ -12,14 +14,13 @@ export const getDaoPlugins = async () => {
         });
 
         const plugins = freepaiDAO.value[installed_plugins_index][1].Vector
-        for (const plugin in plugins) {
-            const plugin_id = plugin.Struct.value[0][1].U64;
-            const plugin_version_number = plugin.Struct.value[1][1].U64
+        for (const i in plugins) {
+            const plugin = plugins[i];
+            const plugin_id = parseInt(plugin.Struct.value[0][1].U64);
+            const plugin_version_number = parseInt(plugin.Struct.value[1][1].U64)
 
-            rets.push_back({
-                plugin_id: plugin_id,
-                plugin_version_number: plugin_version_number,
-            })
+            const plugin_info = await getPluginInfo(plugin_id, plugin_version_number)
+            rets.push(plugin_info)
         }
 
         return rets;

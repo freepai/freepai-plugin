@@ -1683,6 +1683,15 @@
     "@garfish/hooks" "1.10.2"
     "@garfish/utils" "1.10.2"
 
+"@garfish/remote-module@^1.10.2":
+  version "1.10.2"
+  resolved "https://registry.yarnpkg.com/@garfish/remote-module/-/remote-module-1.10.2.tgz#a5b65364cac52f496de8526f766adfd7d40afe6a"
+  integrity sha512-X2vfa9famXVdmotrDPargz43zQuiNciYT+RHiU1PmKpiDcajjvh+yapZ/v0/7RDEA3gqRJiu3K+4nggKYvTrMQ==
+  dependencies:
+    "@garfish/hooks" "1.10.2"
+    "@garfish/loader" "1.10.2"
+    "@garfish/utils" "1.10.2"
+
 "@garfish/router@1.10.2":
   version "1.10.2"
   resolved "https://registry.yarnpkg.com/@garfish/router/-/router-1.10.2.tgz#bc53886ecc2a479a47f08de697dcf2b9433cb593"
