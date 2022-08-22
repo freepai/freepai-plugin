@@ -1,4 +1,6 @@
 import Garfish from 'garfish';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import { useEffect, useState, useRef, useCallback } from 'react';
 import {
   Layout,
@@ -30,6 +32,7 @@ import { getDaoPlugins } from '../../utils/dao';
 
 import { loadModule } from '@garfish/remote-module';
 import { IDAO, IApp } from '../../extpoints/dao_app';
+import { useDao } from '../../contexts/DaoContext';
 
 import './index.less';
 
@@ -65,32 +68,36 @@ const App = observer(({ store }: { store: any }) => {
   const defaultOpenKeys = [
     location.pathname.replace(`/${basename}/`, '').split('/')[0],
   ];
+  const { registerApp } = useDao()
 
   const adapter_uri = (res:String) => {
     if (res.startsWith("ipfs:://")) {
       const ipfs_cid = res.substring(8)
       //return `https://ipfs.filebase.io/ipfs/${ipfs_cid}`.toString()
-      return "https://ipfs.filebase.io/ipfs/QmXViHkaid2qxEa2vQQKiPvrDx7mhW24tXnr7jAEwX5GqD"
+      return "https://ipfs.filebase.io/ipfs/Qma9tdaurKrzFM3eFVjsojnh3u7YhCiehqmQWzn3w4zydJ"
     } else {
       return res.toString()
     }
   }
 
   class TheDAO implements IDAO {
-    constructor() {
 
-    }
-
-    registerApp(app: IApp) {
-  
+    async registerApp(app: IApp) {
       subAppMenus.push({
         key: app.name,
         icon: <img src={newSvg} className="sidebar-item-icon" />,
-        title: `【新增子应用】${app.name}`,
+        title: `【PluginApp】${app.name}`,
         path: app.activeWhen,
       });
   
       setSubAppMenus(subAppMenus);
+
+      const provider = await app.provider()
+      provider.render({
+        React: React,
+        ReactDOM: ReactDOM,
+        el: document.getElementById('sub-container')
+      })
     }
   }
 

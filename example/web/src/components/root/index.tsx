@@ -6,6 +6,7 @@ import {
   Navigate,
 } from 'react-router-dom';
 import { InjectedProvider } from '../../contexts/InjectedProviderContext';
+import { DaoProvider, useDao } from '../../contexts/DaoContext';
 import { ConfigProvider, Spin } from '@arco-design/web-react';
 import { store } from '../../store';
 import App from '../../components/App';
@@ -17,10 +18,11 @@ import './index.less';
 const LoadApp = React.lazy(() => import('../loadApp'));
 const mainHome = 'main/index';
 
-const RootComponent = () => {
+
+const TheRouter = () => {
+  const { apps } = useDao();
+
   return (
-    <InjectedProvider>
-      <ConfigProvider prefixCls={prefixCls}>
         <Router>
           <Routes>
             <Route path={basename} element={<App store={store} />}>
@@ -77,6 +79,19 @@ const RootComponent = () => {
                 );
               })}
 
+            {
+            apps &&
+              apps.map((v) => {
+                const PluginApp = v.provider()
+                return (
+                  <Route
+                    key={v.name}
+                    path={`${basename}${v.activeWhen}/*`}
+                    element={<PluginApp />}
+                  ></Route>
+                );
+              })}
+
             {/* 由于vue2 的 activeWhen 返回的是函数，需要在这里静态注册路由 */}
             <Route
               path={`${basename}/vue2/*`}
@@ -111,7 +126,17 @@ const RootComponent = () => {
             <Route path="*" element={<NotFound />}></Route>
           </Routes>
         </Router>
+  );
+}
+
+const RootComponent = () => {
+  return (
+    <InjectedProvider>
+      <DaoProvider>
+      <ConfigProvider prefixCls={prefixCls}>
+        <TheRouter/>
       </ConfigProvider>
+      </DaoProvider>
     </InjectedProvider>
   );
 };

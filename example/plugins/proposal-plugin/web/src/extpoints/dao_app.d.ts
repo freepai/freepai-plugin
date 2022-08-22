@@ -1,11 +1,16 @@
 import React from 'react';
 
-export interface IApp {
+declare function Provider(this: any, appInfo: any, props: any) : Promise<{
+    render: (appInfo: any) => any;
+    destroy: (appInfo: any) => any;
+}>
+
+declare interface IApp {
     name: string,
     activeWhen: string,
-    entry: React.ReactNode
+    provider: Provider
 }
 
-export interface IDAO {
+declare interface IDAO {
     registerApp(app: IApp)
 }

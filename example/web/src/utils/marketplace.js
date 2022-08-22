@@ -24,7 +24,7 @@ export const getPluginInfo = async (plugin_id, version_id) => {
         for (const i in plugins) {
             const plugin = plugins[i];
             
-            const the_plugin_id = plugin.Struct.value[0][1].U64
+            const the_plugin_id = parseInt(plugin.Struct.value[0][1].U64)
             const the_plugin_name = utils.hexToString(plugin.Struct.value[1][1].Bytes);
             const the_plugin_desc = utils.hexToString( plugin.Struct.value[2][1].Bytes);
             const the_plugin_git_repo = utils.hexToString(plugin.Struct.value[3][1].Bytes);

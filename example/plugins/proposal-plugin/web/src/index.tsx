@@ -37,7 +37,7 @@ export const setup = (dao: IDAO) => {
   dao.registerApp({
     name: "proposal_app",
     activeWhen: "/proposal",
-    entry: RootComponent,
+    provider: provider,
   })
 }
 
