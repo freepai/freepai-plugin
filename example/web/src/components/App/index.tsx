@@ -1,6 +1,5 @@
 import Garfish from 'garfish';
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { useEffect, useState, useRef, useCallback } from 'react';
 import {
   Layout,
@@ -31,7 +30,7 @@ import StarcoinSignIn from '../Web3/starcoinSignIn';
 import { getDaoPlugins } from '../../utils/dao';
 
 import { loadModule } from '@garfish/remote-module';
-import { IDAO, IApp } from '../../extpoints/dao_app';
+import { IDAO, IApp } from '../../extpoints/daoApp.interface';
 import { useDao } from '../../contexts/DaoContext';
 
 import './index.less';
@@ -83,6 +82,14 @@ const App = observer(({ store }: { store: any }) => {
   class TheDAO implements IDAO {
 
     async registerApp(app: IApp) {
+      // 调用 Garfish.registerApp 动态注册子应用
+      Garfish.registerApp({
+        name: app.name,
+        activeWhen: app.activeWhen,
+        entry: "nested",
+        nested: app.provider,
+      });
+
       subAppMenus.push({
         key: app.name,
         icon: <img src={newSvg} className="sidebar-item-icon" />,
@@ -91,13 +98,6 @@ const App = observer(({ store }: { store: any }) => {
       });
   
       setSubAppMenus(subAppMenus);
-
-      const provider = await app.provider()
-      provider.render({
-        React: React,
-        ReactDOM: ReactDOM,
-        el: document.getElementById('sub-container')
-      })
     }
   }
 

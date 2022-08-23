@@ -3,6 +3,7 @@ import { GarfishEsModule } from '@garfish/es-module';
 import { GarfishCssScope } from '@garfish/css-scope';
 import { store } from './store';
 import { basename, localApps } from './constant';
+import { AppLoader } from './plugins/appLoad/appLoaderPlugin'
 
 declare const Cypress: any;
 type RunInfo = NonNullable<Parameters<typeof GarfishInstance.run>[0]>;
@@ -81,6 +82,7 @@ let defaultConfig: RunInfo = {
   // 插件列表
   plugins: [
     GarfishEsModule(),
+    AppLoader(),
     // GarfishCssScope(),
   ],
 
