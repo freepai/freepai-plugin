@@ -73,7 +73,7 @@ const App = observer(({ store }: { store: any }) => {
     if (res.startsWith("ipfs:://")) {
       const ipfs_cid = res.substring(8)
       //return `https://ipfs.filebase.io/ipfs/${ipfs_cid}`.toString()
-      return "https://ipfs.filebase.io/ipfs/Qma9tdaurKrzFM3eFVjsojnh3u7YhCiehqmQWzn3w4zydJ"
+      return "https://ipfs.filebase.io/ipfs/QmR2qsFESkhDe4Sgr1MazzfXUbUGc2CBa7vG6p2u9ALzUF"
     } else {
       return res.toString()
     }
@@ -125,7 +125,13 @@ const App = observer(({ store }: { store: any }) => {
     for (const i in daoPlugins) {
       const plugin_info = daoPlugins[i];
 
-      const modules = await loadModule(adapter_uri(plugin_info.js_entry_uri));
+      const app = await Garfish.loadApp(plugin_info.name, {
+        cache: true,
+        entry: adapter_uri(plugin_info.js_entry_uri)
+      })
+
+      const provider = await app?.getProvider();
+      const modules = app?.cjsModules;
       modules?.setup(theDao);
     }
 
