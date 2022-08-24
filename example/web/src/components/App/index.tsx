@@ -130,8 +130,9 @@ const App = observer(({ store }: { store: any }) => {
         entry: adapter_uri(plugin_info.js_entry_uri)
       })
 
-      const provider = await app?.getProvider();
-      const modules = app?.cjsModules;
+      app?.mount()
+
+      const modules = app?.cjsModules.exports;
       modules?.setup(theDao);
     }
 

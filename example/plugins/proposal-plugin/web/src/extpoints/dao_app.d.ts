@@ -12,5 +12,7 @@ declare interface IApp {
 }
 
 declare interface IDAO {
+    name: string,
+    address: string, 
     registerApp(app: IApp)
 }

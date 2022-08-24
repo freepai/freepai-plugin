@@ -34,6 +34,9 @@ export const setup = (dao: IDAO) => {
   console.log("plugin setup")
   Message.info("plugin setup")
 
+  const daoName = dao.name
+  const daoAddress = dao.address;
+
   dao.registerApp({
     name: "proposal_app",
     activeWhen: "/proposal",
