@@ -82,9 +82,12 @@ const App = observer(({ store }: { store: any }) => {
   class TheDAO implements IDAO {
 
     async registerApp(app: IApp) {
+      app.activeWhen = "/newRegister/vue2-new-8"
+
       // 调用 Garfish.registerApp 动态注册子应用
       Garfish.registerApp({
         name: app.name,
+        basename: "/examples",
         activeWhen: app.activeWhen,
         entry: "nested",
         nested: app.provider,
@@ -130,13 +133,25 @@ const App = observer(({ store }: { store: any }) => {
         entry: adapter_uri(plugin_info.js_entry_uri)
       })
 
-      await app?.mount()
+      //await app?.mount()
+      await app?.compileAndRenderContainer();
+
+      /*
+      const asyncScripts = await app?.compileAndRenderContainer();
+
+      const compileAndRenderContainer = async () => {
+        // Execute asynchronous script
+        return asyncScripts
+      }
+
+      app.compileAndRenderContainer = compileAndRenderContainer
+      */
 
       const modules = app?.cjsModules.exports;
       modules?.setup(theDao);
     }
 
-  }, []);
+  }, [location]);
 
   const handleCollapsed = useCallback(() => {
     setCollapsed(!collapsed);
