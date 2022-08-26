@@ -68,6 +68,7 @@ const App = observer(({ store }: { store: any }) => {
     location.pathname.replace(`/${basename}/`, '').split('/')[0],
   ];
   const { registerApp } = useDao()
+  const [pluginLoaded, setPluginLoaded] = useState(false)
 
   const adapter_uri = (res:String) => {
     if (res.startsWith("ipfs:://")) {
@@ -80,24 +81,28 @@ const App = observer(({ store }: { store: any }) => {
   }
 
   class TheDAO implements IDAO {
+    public name: string
+
+    constructor(name) {
+      this.name = name
+    }
 
     async registerApp(app: IApp) {
-      app.activeWhen = "/newRegister/vue2-new-8"
+      const activeWhen = `/newRegister${app.activeWhen}`
 
       // 调用 Garfish.registerApp 动态注册子应用
       Garfish.registerApp({
-        name: app.name,
+        name: this.name,
         basename: "/examples",
-        activeWhen: app.activeWhen,
-        entry: "nested",
-        nested: app.provider,
+        activeWhen: activeWhen,
+        entry: "cached",
       });
 
       subAppMenus.push({
         key: app.name,
         icon: <img src={newSvg} className="sidebar-item-icon" />,
         title: `【PluginApp】${app.name}`,
-        path: app.activeWhen,
+        path: activeWhen,
       });
   
       setSubAppMenus(subAppMenus);
@@ -122,34 +127,26 @@ const App = observer(({ store }: { store: any }) => {
   }, [location]);
 
   useEffect(async () => {
-    const theDao = new TheDAO()
+    if (pluginLoaded) {
+      return
+    }
+
+    
     const daoPlugins:any = await getDaoPlugins();
 
     for (const i in daoPlugins) {
       const plugin_info = daoPlugins[i];
 
-      const app = await Garfish.loadApp(plugin_info.name, {
-        cache: true,
+      const app = await Garfish.preLoadApp(plugin_info.name, {
         entry: adapter_uri(plugin_info.js_entry_uri)
       })
 
-      //await app?.mount()
-      await app?.compileAndRenderContainer();
-
-      /*
-      const asyncScripts = await app?.compileAndRenderContainer();
-
-      const compileAndRenderContainer = async () => {
-        // Execute asynchronous script
-        return asyncScripts
-      }
-
-      app.compileAndRenderContainer = compileAndRenderContainer
-      */
-
+      const theDao = new TheDAO(plugin_info.name)
       const modules = app?.cjsModules.exports;
       modules?.setup(theDao);
     }
+
+    setPluginLoaded(true)
 
   }, [location]);
 
